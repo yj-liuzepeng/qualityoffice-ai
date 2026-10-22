@@ -1,0 +1,35 @@
+{
+  "decision_level": "U_user_confirmed",
+  "confirmed_date": "2026-10-22",
+  "chinese_name": "质量AI助手",
+  "english_name": "QualityOffice AI",
+  "display_name": "质量AI助手 · QualityOffice AI",
+  "positioning": "面向专业工作的 AI 知识与办公助手",
+  "tagline": "专业知识，智能办公。",
+  "initial_market": "医药行业",
+  "initial_validation_scenarios": [
+    "QA",
+    "QC"
+  ],
+  "user_scope": "面向需要管理资料、快速获取知识和制作办公文件的个人用户；医药行业为首个预设场景，首批以 QA/QC 任务验证",
+  "expansion_direction": "通用引擎加可选领域包；新领域先验证后发布",
+  "release_scope_policy": "保留V0.1已确认范围；新增需求以Spec v1.2和关联用例分版本实施",
+  "repository_name_recommendation": "qualityoffice-ai",
+  "installer_name_pattern": "QualityOfficeAI-Setup-x64-{version}.exe",
+  "not_yet_frozen": [
+    "appId",
+    "protocol",
+    "service domain",
+    "visual identity",
+    "trademark and domain availability"
+  ],
+  "internal_contract_policy": "qdesk/quality-assistant等内部契约标识保持兼容，不作为对外品牌",
+  "chinese_name_policy": "暂沿用已确认中文名；对外以QualityOffice AI为主要标识，不强制质量岗位",
+  "product_pillars": [
+    "知识库管理与快速问答",
+    "可复用个人要求的办公辅助",
+    "选择式领域资讯",
+    "简洁高效的专业界面"
+  ],
+  "positioning_wording_level": "D_specification_wording_for_user_confirmed_cross_domain_direction"
+}

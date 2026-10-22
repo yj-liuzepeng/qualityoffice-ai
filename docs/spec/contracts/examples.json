@@ -1,0 +1,443 @@
+{
+  "schema_smoke_examples": [
+    {
+      "name": "parse valid source",
+      "schema": "parse-result.schema.json",
+      "value": {
+        "schema_version": "1.0",
+        "document_id": "00000000-0000-4000-8000-000000000001",
+        "document_version_id": "00000000-0000-4000-8000-000000000001",
+        "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "parser_version": "fixture-parser-1",
+        "status": "ok",
+        "segments": [
+          {
+            "segment_id": "s1",
+            "order": 0,
+            "kind": "paragraph",
+            "text": "质量管理要求",
+            "locator": {
+              "kind": "pdf",
+              "page": 1
+            },
+            "extraction": "native"
+          }
+        ],
+        "coverage": {
+          "unit": "pages",
+          "total_units": 1,
+          "processed_units": 1,
+          "selected_ranges": [
+            "1"
+          ],
+          "omitted": [],
+          "complete": true
+        },
+        "warnings": [],
+        "error": null
+      },
+      "expected_valid": true
+    },
+    {
+      "name": "reject page zero",
+      "schema": "parse-result.schema.json",
+      "value": {
+        "schema_version": "1.0",
+        "document_id": "00000000-0000-4000-8000-000000000001",
+        "document_version_id": "00000000-0000-4000-8000-000000000001",
+        "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "parser_version": "fixture-parser-1",
+        "status": "ok",
+        "segments": [
+          {
+            "segment_id": "s1",
+            "order": 0,
+            "kind": "paragraph",
+            "text": "质量管理要求",
+            "locator": {
+              "kind": "pdf",
+              "page": 0
+            },
+            "extraction": "native"
+          }
+        ],
+        "coverage": {
+          "unit": "pages",
+          "total_units": 1,
+          "processed_units": 1,
+          "selected_ranges": [
+            "1"
+          ],
+          "omitted": [],
+          "complete": true
+        },
+        "warnings": [],
+        "error": null
+      },
+      "expected_valid": false
+    },
+    {
+      "name": "docx needs paragraph or table location",
+      "schema": "parse-result.schema.json",
+      "value": {
+        "schema_version": "1.0",
+        "document_id": "00000000-0000-4000-8000-000000000001",
+        "document_version_id": "00000000-0000-4000-8000-000000000001",
+        "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "parser_version": "fixture-parser-1",
+        "status": "ok",
+        "segments": [
+          {
+            "segment_id": "s1",
+            "order": 0,
+            "kind": "paragraph",
+            "text": "质量管理要求",
+            "locator": {
+              "kind": "docx",
+              "part": "word/document.xml"
+            },
+            "extraction": "native"
+          }
+        ],
+        "coverage": {
+          "unit": "pages",
+          "total_units": 1,
+          "processed_units": 1,
+          "selected_ranges": [
+            "1"
+          ],
+          "omitted": [],
+          "complete": true
+        },
+        "warnings": [],
+        "error": null
+      },
+      "expected_valid": false
+    },
+    {
+      "name": "office bounded generation",
+      "schema": "office-plan.schema.json",
+      "value": {
+        "schema_version": "1.0",
+        "operation": "base_docx",
+        "input_version_ids": [
+          "00000000-0000-4000-8000-000000000001"
+        ],
+        "template": {
+          "template_id": "00000000-0000-4000-8000-000000000001",
+          "version": 1
+        },
+        "targets": [],
+        "steps": [
+          {
+            "type": "append_doc_section",
+            "heading": "资料摘要",
+            "paragraphs": [
+              "待核对的资料整理内容"
+            ],
+            "source_ids": [
+              "S1"
+            ]
+          }
+        ],
+        "output_format": "docx",
+        "missing_fields": [],
+        "allowed_changes": [
+          "create_new_document"
+        ]
+      },
+      "expected_valid": true
+    },
+    {
+      "name": "reject arbitrary code",
+      "schema": "office-plan.schema.json",
+      "value": {
+        "schema_version": "1.0",
+        "operation": "base_docx",
+        "input_version_ids": [
+          "00000000-0000-4000-8000-000000000001"
+        ],
+        "template": {
+          "template_id": "00000000-0000-4000-8000-000000000001",
+          "version": 1
+        },
+        "targets": [],
+        "steps": [
+          {
+            "type": "python",
+            "code": "arbitrary source"
+          }
+        ],
+        "output_format": "docx",
+        "missing_fields": [],
+        "allowed_changes": [
+          "create_new_document"
+        ]
+      },
+      "expected_valid": false
+    },
+    {
+      "name": "parse tool by ID",
+      "schema": "local-tools.schema.json",
+      "value": {
+        "tool": "qdesk.file.parse",
+        "operation_id": "00000000-0000-4000-8000-000000000001",
+        "arguments": {
+          "document_version_id": "00000000-0000-4000-8000-000000000001",
+          "selected_ranges": []
+        }
+      },
+      "expected_valid": true
+    },
+    {
+      "name": "office plan references registered schema",
+      "schema": "local-tools.schema.json",
+      "value": {
+        "tool": "qdesk.office.plan",
+        "operation_id": "00000000-0000-4000-8000-000000000001",
+        "arguments": {
+          "plan": {
+            "schema_version": "1.0",
+            "operation": "base_docx",
+            "input_version_ids": [
+              "00000000-0000-4000-8000-000000000001"
+            ],
+            "template": {
+              "template_id": "00000000-0000-4000-8000-000000000001",
+              "version": 1
+            },
+            "targets": [],
+            "steps": [
+              {
+                "type": "append_doc_section",
+                "heading": "资料摘要",
+                "paragraphs": [
+                  "待核对的资料整理内容"
+                ],
+                "source_ids": [
+                  "S1"
+                ]
+              }
+            ],
+            "output_format": "docx",
+            "missing_fields": [],
+            "allowed_changes": [
+              "create_new_document"
+            ]
+          }
+        }
+      },
+      "expected_valid": true
+    },
+    {
+      "name": "no raw shell tool",
+      "schema": "local-tools.schema.json",
+      "value": {
+        "tool": "qdesk.shell",
+        "operation_id": "00000000-0000-4000-8000-000000000001",
+        "arguments": {
+          "command": "arbitrary command"
+        }
+      },
+      "expected_valid": false
+    },
+    {
+      "name": "no path argument",
+      "schema": "local-tools.schema.json",
+      "value": {
+        "tool": "qdesk.file.parse",
+        "operation_id": "00000000-0000-4000-8000-000000000001",
+        "arguments": {
+          "document_version_id": "00000000-0000-4000-8000-000000000001",
+          "selected_ranges": [],
+          "path": "C:/outside.docx"
+        }
+      },
+      "expected_valid": false
+    },
+    {
+      "name": "final with pending usage",
+      "schema": "sse-event.schema.json",
+      "value": {
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "run_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 5,
+        "type": "final",
+        "data": {
+          "state": "completed",
+          "billing_state": "pending_usage",
+          "charged_units": null,
+          "finish_reason": "stop"
+        }
+      },
+      "expected_valid": true
+    },
+    {
+      "name": "invalid final missing billing",
+      "schema": "sse-event.schema.json",
+      "value": {
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "run_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 5,
+        "type": "final",
+        "data": {
+          "state": "completed",
+          "finish_reason": "stop"
+        }
+      },
+      "expected_valid": false
+    },
+    {
+      "name": "local_profile",
+      "schema": "personalization-and-subscriptions.schema.json",
+      "value": {
+        "kind": "office_profile",
+        "schema_version": "1.0",
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "revision": 1,
+        "name": "管理层周报",
+        "description": "",
+        "is_default": false,
+        "fields": {
+          "language": "zh-CN",
+          "tone": "concise",
+          "excel": {
+            "decimal_places": 2
+          }
+        },
+        "template": null,
+        "knowledge_base_ids": [],
+        "domain": null,
+        "created_at": "2026-10-22T09:00:00Z"
+      },
+      "expected_valid": true
+    },
+    {
+      "name": "daily_plan",
+      "schema": "personalization-and-subscriptions.schema.json",
+      "value": {
+        "kind": "subscription_plan",
+        "schema_version": "1.0",
+        "plan_id": "00000000-0000-4000-8000-000000000001",
+        "revision": 1,
+        "enabled": true,
+        "selections": [
+          {
+            "domain_id": "pharma",
+            "package_version": 1,
+            "topic_ids": [
+              "gmp"
+            ],
+            "content_type_ids": [
+              "policy"
+            ],
+            "keywords": []
+          }
+        ],
+        "timezone": "Asia/Shanghai",
+        "local_time": "09:00",
+        "resolved_source_ids": [
+          "source-fixture"
+        ],
+        "windows_notifications": true,
+        "effective_from": "2026-10-23T01:00:00Z"
+      },
+      "expected_valid": true
+    },
+    {
+      "name": "effective_preferences",
+      "schema": "personalization-and-subscriptions.schema.json",
+      "value": {
+        "kind": "effective_preferences",
+        "schema_version": "1.0",
+        "profile": null,
+        "domain": null,
+        "template": null,
+        "fields": {},
+        "provenance": [],
+        "conflicts": [],
+        "knowledge_scope": [],
+        "snapshot_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expected_valid": true
+    },
+    {
+      "name": "bad_time",
+      "schema": "personalization-and-subscriptions.schema.json",
+      "value": {
+        "kind": "subscription_plan",
+        "schema_version": "1.0",
+        "plan_id": "00000000-0000-4000-8000-000000000001",
+        "revision": 1,
+        "enabled": true,
+        "selections": [
+          {
+            "domain_id": "pharma",
+            "package_version": 1,
+            "topic_ids": [
+              "gmp"
+            ],
+            "content_type_ids": [
+              "policy"
+            ],
+            "keywords": []
+          }
+        ],
+        "timezone": "Asia/Shanghai",
+        "local_time": "25:00",
+        "resolved_source_ids": [
+          "source-fixture"
+        ],
+        "windows_notifications": true,
+        "effective_from": "2026-10-23T01:00:00Z"
+      },
+      "expected_valid": false
+    },
+    {
+      "name": "script_profile",
+      "schema": "personalization-and-subscriptions.schema.json",
+      "value": {
+        "kind": "office_profile",
+        "schema_version": "1.0",
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "revision": 1,
+        "name": "管理层周报",
+        "description": "",
+        "is_default": false,
+        "fields": {
+          "language": "zh-CN",
+          "tone": "concise",
+          "excel": {
+            "decimal_places": 2
+          }
+        },
+        "template": null,
+        "knowledge_base_ids": [],
+        "domain": null,
+        "created_at": "2026-10-22T09:00:00Z",
+        "script": "calc.exe"
+      },
+      "expected_valid": false
+    }
+  ],
+  "api_request_example": {
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "task_id": "00000000-0000-4000-8000-000000000001",
+    "attempt_id": "00000000-0000-4000-8000-000000000001",
+    "model_role": "quality-assistant",
+    "purpose": "task",
+    "messages": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "type": "text",
+            "text": "请整理选中文档的质量要求，并标出来源。"
+          }
+        ]
+      }
+    ],
+    "tools": [],
+    "max_output_tokens": 2000
+  }
+}

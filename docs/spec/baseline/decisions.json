@@ -1,0 +1,245 @@
+{
+  "schema_version": "1.0",
+  "all_results": "not_validated",
+  "gates": [
+    {
+      "id": "G00",
+      "due_cycle": "C00",
+      "title": "上游与运行组合",
+      "owner_role": "技术负责人",
+      "status": "open",
+      "freeze_fields": {
+        "upstream_commit": null,
+        "lockfiles_and_asset_hashes": null,
+        "plugin_engine_compatibility": null,
+        "runtime_versions": null,
+        "licenses": null,
+        "windows_build_reports": null,
+        "ocr_engine_and_thresholds": null
+      },
+      "decision": null,
+      "evidence_paths": [],
+      "closed_by": null,
+      "closed_at": null
+    },
+    {
+      "id": "G01",
+      "due_cycle": "C02",
+      "title": "受控执行与原件",
+      "owner_role": "技术负责人+测试",
+      "status": "open",
+      "freeze_fields": {
+        "tool_allowlist": null,
+        "write_boundary_report": null,
+        "hardlink_reparse_report": null,
+        "sandbox_failure_report": null,
+        "format_limits_measured": null
+      },
+      "decision": null,
+      "evidence_paths": [],
+      "closed_by": null,
+      "closed_at": null
+    },
+    {
+      "id": "G02",
+      "due_cycle": "C04",
+      "title": "模型搜索与服务端",
+      "owner_role": "技术负责人",
+      "status": "open",
+      "freeze_fields": {
+        "model_fixed_id": null,
+        "context_tool_usage_cancel_contract": null,
+        "price_card": null,
+        "search_provider": null,
+        "server_region": null,
+        "provider_processing_region": null,
+        "request_cost_bounds": null
+      },
+      "decision": null,
+      "evidence_paths": [],
+      "closed_by": null,
+      "closed_at": null
+    },
+    {
+      "id": "G03",
+      "due_cycle": "C05",
+      "title": "品牌安装与支持范围",
+      "owner_role": "产品负责人+技术",
+      "status": "open",
+      "freeze_fields": {
+        "product_name_appid_protocol": {
+          "chinese_name": "质量AI助手",
+          "english_name": "QualityOffice AI",
+          "app_id": null,
+          "protocol": null
+        },
+        "service_origin": null,
+        "windows_min_builds": null,
+        "installer_mode": null,
+        "signing_policy": null,
+        "minimum_hardware_and_disk": null,
+        "ui_visual_and_dpi_evidence": null,
+        "first_time_usability_report": null
+      },
+      "decision": null,
+      "evidence_paths": [],
+      "closed_by": null,
+      "closed_at": null,
+      "confirmed_product_identity": {
+        "decision_level": "U_user_confirmed",
+        "confirmed_date": "2026-10-22",
+        "chinese_name": "质量AI助手",
+        "english_name": "QualityOffice AI",
+        "display_name": "质量AI助手 · QualityOffice AI",
+        "positioning": "面向专业工作的 AI 知识与办公助手",
+        "tagline": "专业知识，智能办公。",
+        "initial_market": "医药行业",
+        "initial_validation_scenarios": [
+          "QA",
+          "QC"
+        ],
+        "user_scope": "面向需要管理资料、快速获取知识和制作办公文件的个人用户；医药行业为首个预设场景，首批以 QA/QC 任务验证",
+        "expansion_direction": "通用引擎加可选领域包；新领域先验证后发布",
+        "release_scope_policy": "保留V0.1已确认范围；新增需求以Spec v1.2和关联用例分版本实施",
+        "repository_name_recommendation": "qualityoffice-ai",
+        "installer_name_pattern": "QualityOfficeAI-Setup-x64-{version}.exe",
+        "not_yet_frozen": [
+          "appId",
+          "protocol",
+          "service domain",
+          "visual identity",
+          "trademark and domain availability"
+        ],
+        "internal_contract_policy": "qdesk/quality-assistant等内部契约标识保持兼容，不作为对外品牌",
+        "chinese_name_policy": "暂沿用已确认中文名；对外以QualityOffice AI为主要标识，不强制质量岗位",
+        "product_pillars": [
+          "知识库管理与快速问答",
+          "可复用个人要求的办公辅助",
+          "选择式领域资讯",
+          "简洁高效的专业界面"
+        ],
+        "positioning_wording_level": "D_specification_wording_for_user_confirmed_cross_domain_direction"
+      }
+    },
+    {
+      "id": "G04",
+      "due_cycle": "C04",
+      "title": "内测商业政策",
+      "owner_role": "产品负责人",
+      "status": "open",
+      "freeze_fields": {
+        "membership_and_grant_policy": null,
+        "measured_cost_sample": null,
+        "quota_budget_values": null,
+        "support_and_terms": null,
+        "retention_policy": null
+      },
+      "decision": null,
+      "evidence_paths": [],
+      "closed_by": null,
+      "closed_at": null
+    },
+    {
+      "id": "G05",
+      "due_cycle": "C08",
+      "title": "知识效果与嵌入",
+      "owner_role": "技术+专业评审",
+      "status": "open",
+      "freeze_fields": {
+        "embedding_revision_hash_backend": null,
+        "tokenizer_chunker": null,
+        "frozen_evaluation_set": null,
+        "retrieval_citation_refusal_results": null,
+        "delete_and_rebuild_results": null,
+        "general_and_domain_evaluation_subsets": null
+      },
+      "decision": null,
+      "evidence_paths": [],
+      "closed_by": null,
+      "closed_at": null
+    },
+    {
+      "id": "G06",
+      "due_cycle": "C10",
+      "title": "来源与调度",
+      "owner_role": "产品+技术",
+      "status": "open",
+      "freeze_fields": {
+        "at_least_four_source_adapters": null,
+        "source_access_rules": null,
+        "theme_labels": null,
+        "daily_budget_absolute_cap": null,
+        "schedule_test_clock_results": null,
+        "fourteen_day_observation": null,
+        "published_domain_package_catalog": null,
+        "topic_type_source_coverage": null,
+        "package_integrity_and_trust_policy": null,
+        "subscription_revision_and_usability_results": null
+      },
+      "decision": null,
+      "evidence_paths": [],
+      "closed_by": null,
+      "closed_at": null
+    },
+    {
+      "id": "G07",
+      "due_cycle": "C13",
+      "title": "Office工作流与保真",
+      "owner_role": "技术+测试",
+      "status": "open",
+      "freeze_fields": {
+        "word_excel_support_before_C11_release": null,
+        "ppt_generate_support_before_C12_release": null,
+        "ppt_patch_support_before_C13_release": null,
+        "fonts_templates_and_licenses": null,
+        "actual_render_checks": null,
+        "unchanged_parts_evidence": null,
+        "preferences_precedence_snapshot_and_usability": null
+      },
+      "decision": null,
+      "evidence_paths": [],
+      "closed_by": null,
+      "closed_at": null,
+      "subgates": [
+        {
+          "id": "G07a",
+          "due_cycle": "C11",
+          "scope": "Word/Excel",
+          "status": "open",
+          "evidence_paths": []
+        },
+        {
+          "id": "G07b",
+          "due_cycle": "C12",
+          "scope": "PPT生成",
+          "status": "open",
+          "evidence_paths": []
+        },
+        {
+          "id": "G07c",
+          "due_cycle": "C13",
+          "scope": "PPT修改",
+          "status": "open",
+          "evidence_paths": []
+        }
+      ]
+    },
+    {
+      "id": "G08",
+      "due_cycle": "C14",
+      "title": "领域调优效果",
+      "owner_role": "产品+技术",
+      "status": "open",
+      "freeze_fields": {
+        "domain_case_set": null,
+        "blind_comparison": null,
+        "hard_invariants": null,
+        "performance_and_cost_report": null
+      },
+      "decision": null,
+      "evidence_paths": [],
+      "closed_by": null,
+      "closed_at": null
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "schema_version": "1.0",
+  "status": "planning_baseline",
+  "requirements": [
+    {
+      "id": "BASE-01",
+      "version": "V0.1",
+      "title": "固定发行基线",
+      "priority": "P0"
+    },
+    {
+      "id": "BASE-02",
+      "version": "V0.1",
+      "title": "干净 Windows 安装运行",
+      "priority": "P0"
+    },
+    {
+      "id": "BASE-03",
+      "version": "V0.1",
+      "title": "基础对话任务",
+      "priority": "P0"
+    },
+    {
+      "id": "BASE-04",
+      "version": "V0.1",
+      "title": "任务状态与恢复",
+      "priority": "P0"
+    },
+    {
+      "id": "BASE-05",
+      "version": "V0.1",
+      "title": "产品独立性",
+      "priority": "P0"
+    },
+    {
+      "id": "FILE-01",
+      "version": "V0.1",
+      "title": "统一文件输入",
+      "priority": "P0"
+    },
+    {
+      "id": "FILE-02",
+      "version": "V0.1",
+      "title": "多格式解析与覆盖范围",
+      "priority": "P0"
+    },
+    {
+      "id": "FILE-03",
+      "version": "V0.1",
+      "title": "本地 OCR",
+      "priority": "P0"
+    },
+    {
+      "id": "FILE-04",
+      "version": "V0.1",
+      "title": "原件保护与副本",
+      "priority": "P0"
+    },
+    {
+      "id": "FILE-05",
+      "version": "V0.1",
+      "title": "可验证文件定位",
+      "priority": "P0"
+    },
+    {
+      "id": "FILE-06",
+      "version": "V0.1",
+      "title": "产物与预览管理",
+      "priority": "P0"
+    },
+    {
+      "id": "WEB-01",
+      "version": "V0.1",
+      "title": "公开网页检索读取",
+      "priority": "P0"
+    },
+    {
+      "id": "WEB-02",
+      "version": "V0.1",
+      "title": "网页来源对象",
+      "priority": "P0"
+    },
+    {
+      "id": "WEB-03",
+      "version": "V0.1",
+      "title": "法规依据与版本提示",
+      "priority": "P0"
+    },
+    {
+      "id": "WEB-04",
+      "version": "V0.1",
+      "title": "平台凭据及公开范围",
+      "priority": "P0"
+    },
+    {
+      "id": "ACC-01",
+      "version": "V0.1",
+      "title": "邀请激活登录",
+      "priority": "P0"
+    },
+    {
+      "id": "ACC-02",
+      "version": "V0.1",
+      "title": "平台默认模型",
+      "priority": "P0"
+    },
+    {
+      "id": "ACC-03",
+      "version": "V0.1",
+      "title": "服务端权益",
+      "priority": "P0"
+    },
+    {
+      "id": "ACC-04",
+      "version": "V0.1",
+      "title": "用量与成本账本",
+      "priority": "P0"
+    },
+    {
+      "id": "ACC-05",
+      "version": "V0.1",
+      "title": "预留结算与异常幂等",
+      "priority": "P0"
+    },
+    {
+      "id": "ADM-01",
+      "version": "V0.1",
+      "title": "最小管理后台",
+      "priority": "P0"
+    },
+    {
+      "id": "ADM-02",
+      "version": "V0.1",
+      "title": "调整审计",
+      "priority": "P0"
+    },
+    {
+      "id": "OPS-01",
+      "version": "V0.1",
+      "title": "脱敏诊断",
+      "priority": "P0"
+    },
+    {
+      "id": "OPS-02",
+      "version": "V0.1",
+      "title": "更新备份恢复",
+      "priority": "P0"
+    },
+    {
+      "id": "ARCH-01",
+      "version": "V0.1",
+      "title": "薄上游定制与冻结清单",
+      "priority": "P0"
+    },
+    {
+      "id": "ARCH-02",
+      "version": "V0.1",
+      "title": "受控工具和执行边界",
+      "priority": "P0"
+    },
+    {
+      "id": "ARCH-03",
+      "version": "V0.1",
+      "title": "标准化解析和业务契约",
+      "priority": "P0"
+    },
+    {
+      "id": "ARCH-04",
+      "version": "V0.1",
+      "title": "模型网关与 dsh 适配",
+      "priority": "P0"
+    },
+    {
+      "id": "KB-01",
+      "version": "V0.2",
+      "title": "本地库与导入状态",
+      "priority": "P0"
+    },
+    {
+      "id": "KB-02",
+      "version": "V0.2",
+      "title": "文档版本与现行标注",
+      "priority": "P0"
+    },
+    {
+      "id": "KB-03",
+      "version": "V0.2",
+      "title": "切块与本地嵌入",
+      "priority": "P0"
+    },
+    {
+      "id": "KB-04",
+      "version": "V0.2",
+      "title": "范围隔离混合检索",
+      "priority": "P0"
+    },
+    {
+      "id": "KB-05",
+      "version": "V0.2",
+      "title": "基于证据回答和定位",
+      "priority": "P0"
+    },
+    {
+      "id": "KB-06",
+      "version": "V0.2",
+      "title": "原子更新与索引重建",
+      "priority": "P0"
+    },
+    {
+      "id": "KB-07",
+      "version": "V0.2",
+      "title": "删除和引用清理",
+      "priority": "P0"
+    },
+    {
+      "id": "KB-08",
+      "version": "V0.2",
+      "title": "固定集检索与答案评测",
+      "priority": "P0"
+    },
+    {
+      "id": "NEWS-01",
+      "version": "V0.3",
+      "title": "来源适配和访问规则",
+      "priority": "P0"
+    },
+    {
+      "id": "NEWS-02",
+      "version": "V0.3",
+      "title": "增量去重与修订",
+      "priority": "P0"
+    },
+    {
+      "id": "NEWS-03",
+      "version": "V0.3",
+      "title": "主题摘要与费用上限",
+      "priority": "P0"
+    },
+    {
+      "id": "NEWS-04",
+      "version": "V0.3",
+      "title": "每日调度与合并补执行",
+      "priority": "P0"
+    },
+    {
+      "id": "NEWS-05",
+      "version": "V0.3",
+      "title": "站内和 Windows 通知",
+      "priority": "P0"
+    },
+    {
+      "id": "NEWS-06",
+      "version": "V0.3",
+      "title": "失败恢复与运行记录",
+      "priority": "P0"
+    },
+    {
+      "id": "OFF-01",
+      "version": "V0.1",
+      "title": "V0.1基础 Office 副本",
+      "priority": "P0"
+    },
+    {
+      "id": "OFF-02",
+      "version": "V0.4",
+      "title": "受控操作计划与模板",
+      "priority": "P0"
+    },
+    {
+      "id": "OFF-03",
+      "version": "V0.4",
+      "title": "Word工作流",
+      "priority": "P0"
+    },
+    {
+      "id": "OFF-04",
+      "version": "V0.4",
+      "title": "Excel确定性处理",
+      "priority": "P0"
+    },
+    {
+      "id": "OFF-05",
+      "version": "V0.4",
+      "title": "PPT生成",
+      "priority": "P0"
+    },
+    {
+      "id": "OFF-06",
+      "version": "V0.4",
+      "title": "已有PPT范围修改",
+      "priority": "P0"
+    },
+    {
+      "id": "OFF-07",
+      "version": "V0.4",
+      "title": "内容结构及渲染检查",
+      "priority": "P0"
+    },
+    {
+      "id": "NFR-01",
+      "version": "V0.1",
+      "title": "性能与资源上限",
+      "priority": "P0"
+    },
+    {
+      "id": "NFR-02",
+      "version": "V0.1",
+      "title": "权限凭据与不可信输入",
+      "priority": "P0"
+    },
+    {
+      "id": "NFR-03",
+      "version": "V0.1",
+      "title": "观测及脱敏",
+      "priority": "P0"
+    },
+    {
+      "id": "NFR-04",
+      "version": "V0.1",
+      "title": "文件与执行限制",
+      "priority": "P0"
+    },
+    {
+      "id": "REL-01",
+      "version": "V0.1",
+      "title": "可核查发行交付",
+      "priority": "P0"
+    },
+    {
+      "id": "REL-02",
+      "version": "V0.1",
+      "title": "兼容迁移与完整恢复",
+      "priority": "P0"
+    },
+    {
+      "id": "EVAL-01",
+      "version": "V0.5",
+      "title": "领域案例与调优对比",
+      "priority": "P0"
+    },
+    {
+      "id": "BIZ-01",
+      "version": "V0.1",
+      "title": "会员收费设计与成本政策",
+      "priority": "P0"
+    },
+    {
+      "id": "PRODUCT-01",
+      "version": "V0.1",
+      "title": "通用引擎与可选领域预设",
+      "priority": "P0"
+    },
+    {
+      "id": "UI-01",
+      "version": "V0.1",
+      "title": "四模块渐进导航与直接入口",
+      "priority": "P0"
+    },
+    {
+      "id": "UI-02",
+      "version": "V0.1",
+      "title": "简洁专业视觉与缩放键盘",
+      "priority": "P0"
+    },
+    {
+      "id": "UI-03",
+      "version": "V0.1",
+      "title": "首次使用定位与任务验收",
+      "priority": "P0"
+    },
+    {
+      "id": "PREF-01",
+      "version": "V0.4.1",
+      "title": "本地常用要求与版本快照",
+      "priority": "P0"
+    },
+    {
+      "id": "PREF-02",
+      "version": "V0.4.1",
+      "title": "个性化优先级与冲突处理",
+      "priority": "P0"
+    },
+    {
+      "id": "PREF-03",
+      "version": "V0.4.1",
+      "title": "模板知识范围及格式规则绑定",
+      "priority": "P0"
+    },
+    {
+      "id": "FEED-01",
+      "version": "V0.3",
+      "title": "已发布领域包与来源覆盖",
+      "priority": "P0"
+    },
+    {
+      "id": "FEED-02",
+      "version": "V0.3",
+      "title": "只选领域主题内容时间的订阅",
+      "priority": "P0"
+    },
+    {
+      "id": "FEED-03",
+      "version": "V0.3",
+      "title": "计划修订和领域包版本一致性",
+      "priority": "P0"
+    }
+  ]
+}

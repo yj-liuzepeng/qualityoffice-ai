@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qdesk:tool-request:1.0",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "tool": {
+          "const": "qdesk.file.parse"
+        },
+        "operation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "arguments": {
+          "type": "object",
+          "properties": {
+            "document_version_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "selected_ranges": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "minItems": 0,
+              "maxItems": 500
+            }
+          },
+          "required": [
+            "document_version_id",
+            "selected_ranges"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "tool",
+        "operation_id",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "tool": {
+          "const": "qdesk.file.read_segments"
+        },
+        "operation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "arguments": {
+          "type": "object",
+          "properties": {
+            "document_version_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "segment_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 128
+              },
+              "minItems": 1,
+              "maxItems": 100
+            }
+          },
+          "required": [
+            "document_version_id",
+            "segment_ids"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "tool",
+        "operation_id",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "tool": {
+          "const": "qdesk.web.search"
+        },
+        "operation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "arguments": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "maxLength": 500
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          "required": [
+            "query",
+            "limit"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "tool",
+        "operation_id",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "tool": {
+          "const": "qdesk.web.read"
+        },
+        "operation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "arguments": {
+          "type": "object",
+          "properties": {
+            "source_id": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "source_id"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "tool",
+        "operation_id",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "tool": {
+          "const": "qdesk.office.plan"
+        },
+        "operation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "arguments": {
+          "type": "object",
+          "properties": {
+            "plan": {
+              "$ref": "urn:qdesk:office-plan:1.0"
+            }
+          },
+          "required": [
+            "plan"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "tool",
+        "operation_id",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "tool": {
+          "const": "qdesk.office.execute"
+        },
+        "operation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "arguments": {
+          "type": "object",
+          "properties": {
+            "plan_id": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "plan_id"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "tool",
+        "operation_id",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "tool": {
+          "const": "qdesk.kb.search"
+        },
+        "operation_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "arguments": {
+          "type": "object",
+          "properties": {
+            "knowledge_base_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "minItems": 1,
+              "maxItems": 20
+            },
+            "query": {
+              "type": "string",
+              "maxLength": 2000
+            },
+            "include_historical": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "knowledge_base_ids",
+            "query",
+            "include_historical"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "tool",
+        "operation_id",
+        "arguments"
+      ],
+      "additionalProperties": false
+    }
+  ],
+  "description": "Product-owned model-visible tool allowlist. Resource IDs are resolved by host, never by model-supplied OS paths."
+}

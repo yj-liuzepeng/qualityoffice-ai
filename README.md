@@ -2,6 +2,10 @@
 
 English | [中文](README.zh.md)
 
+## QualityOffice AI 工程入口
+
+本仓库为**质量AI助手 · QualityOffice AI**（面向专业工作的 AI 知识与办公助手）产品工程仓库，基于官方开源 DeepSeek Harness 派生并保留完整上游历史：开发启动说明见 [docs/START-HERE.md](docs/START-HERE.md)，实际进度与交接见 [docs/progress.md](docs/progress.md)，统一审查标准见 [docs/review-policy.md](docs/review-policy.md)，有效开发基准目录（需求 v0.3 / Spec v1.2）位于 [docs/spec/README.md](docs/spec/README.md)。
+
 DeepSeek Harness (`dsh`) is an open-source agent harness developed by [DeepSeek AI](https://deepseek.com).
 
 It is built on an **everything-is-a-plugin** architecture and powered by [Cordis](https://github.com/cordiverse/cordis), whose design is described in [_A Programming Paradigm for Spatiotemporal Composability_](https://arxiv.org/abs/2608.25512).

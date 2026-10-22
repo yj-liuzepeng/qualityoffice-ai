@@ -1,0 +1,1176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qdesk:personalization-subscriptions:1.0",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/OfficeProfile"
+    },
+    {
+      "$ref": "#/$defs/EffectivePreferences"
+    },
+    {
+      "$ref": "#/$defs/DomainPackage"
+    },
+    {
+      "$ref": "#/$defs/SubscriptionPlan"
+    }
+  ],
+  "$defs": {
+    "OfficeProfile": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "office_profile"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "profile_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "is_default": {
+          "type": "boolean"
+        },
+        "fields": {
+          "type": "object",
+          "properties": {
+            "audience": {
+              "type": "string",
+              "maxLength": 300
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "tone": {
+              "type": "string",
+              "enum": [
+                "formal",
+                "concise",
+                "explanatory",
+                "training"
+              ]
+            },
+            "length": {
+              "type": "string",
+              "enum": [
+                "brief",
+                "standard",
+                "detailed"
+              ]
+            },
+            "terminology": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "term": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "preferred": {
+                    "type": "string",
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "term",
+                  "preferred"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0,
+              "maxItems": 100
+            },
+            "must_include": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "minItems": 0,
+              "maxItems": 50
+            },
+            "must_avoid": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "minItems": 0,
+              "maxItems": 50
+            },
+            "extra_instructions": {
+              "type": "string",
+              "maxLength": 4000
+            },
+            "word": {
+              "type": "object",
+              "properties": {
+                "heading_levels": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 3
+                },
+                "font": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "body_pt": {
+                  "type": "number",
+                  "minimum": 9,
+                  "maximum": 24
+                },
+                "page_size": {
+                  "type": "string",
+                  "enum": [
+                    "A4",
+                    "Letter"
+                  ]
+                },
+                "margin_mm": {
+                  "type": "number",
+                  "minimum": 10,
+                  "maximum": 40
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "excel": {
+              "type": "object",
+              "properties": {
+                "decimal_places": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "unit": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "date_format": {
+                  "type": "string",
+                  "enum": [
+                    "yyyy-mm-dd",
+                    "yyyy/mm/dd",
+                    "yyyy年mm月dd日"
+                  ]
+                },
+                "header_style": {
+                  "type": "string",
+                  "enum": [
+                    "plain",
+                    "light",
+                    "accent"
+                  ]
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "ppt": {
+              "type": "object",
+              "properties": {
+                "style": {
+                  "type": "string",
+                  "enum": [
+                    "minimal",
+                    "professional",
+                    "training"
+                  ]
+                },
+                "accent_hex": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-Fa-f]{6}$"
+                },
+                "font": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "slide_count": {
+                  "type": "integer",
+                  "minimum": 5,
+                  "maximum": 30
+                },
+                "body_pt": {
+                  "type": "number",
+                  "minimum": 18,
+                  "maximum": 36
+                },
+                "title_pt": {
+                  "type": "number",
+                  "minimum": 24,
+                  "maximum": 60
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "template": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "template_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "version": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "template_id",
+                "version"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "knowledge_base_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 0,
+          "maxItems": 20
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "version": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "id",
+                "version"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "kind",
+        "schema_version",
+        "profile_id",
+        "revision",
+        "name",
+        "description",
+        "is_default",
+        "fields",
+        "template",
+        "knowledge_base_ids",
+        "domain",
+        "created_at"
+      ],
+      "additionalProperties": false
+    },
+    "EffectivePreferences": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "effective_preferences"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "profile": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "profile_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "revision": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "profile_id",
+                "revision"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "version": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "id",
+                "version"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "template": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "template_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "version": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "template_id",
+                "version"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fields": {
+          "type": "object",
+          "properties": {
+            "audience": {
+              "type": "string",
+              "maxLength": 300
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "tone": {
+              "type": "string",
+              "enum": [
+                "formal",
+                "concise",
+                "explanatory",
+                "training"
+              ]
+            },
+            "length": {
+              "type": "string",
+              "enum": [
+                "brief",
+                "standard",
+                "detailed"
+              ]
+            },
+            "terminology": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "term": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "preferred": {
+                    "type": "string",
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "term",
+                  "preferred"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0,
+              "maxItems": 100
+            },
+            "must_include": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "minItems": 0,
+              "maxItems": 50
+            },
+            "must_avoid": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "minItems": 0,
+              "maxItems": 50
+            },
+            "extra_instructions": {
+              "type": "string",
+              "maxLength": 4000
+            },
+            "word": {
+              "type": "object",
+              "properties": {
+                "heading_levels": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 3
+                },
+                "font": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "body_pt": {
+                  "type": "number",
+                  "minimum": 9,
+                  "maximum": 24
+                },
+                "page_size": {
+                  "type": "string",
+                  "enum": [
+                    "A4",
+                    "Letter"
+                  ]
+                },
+                "margin_mm": {
+                  "type": "number",
+                  "minimum": 10,
+                  "maximum": 40
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "excel": {
+              "type": "object",
+              "properties": {
+                "decimal_places": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "unit": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "date_format": {
+                  "type": "string",
+                  "enum": [
+                    "yyyy-mm-dd",
+                    "yyyy/mm/dd",
+                    "yyyy年mm月dd日"
+                  ]
+                },
+                "header_style": {
+                  "type": "string",
+                  "enum": [
+                    "plain",
+                    "light",
+                    "accent"
+                  ]
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "ppt": {
+              "type": "object",
+              "properties": {
+                "style": {
+                  "type": "string",
+                  "enum": [
+                    "minimal",
+                    "professional",
+                    "training"
+                  ]
+                },
+                "accent_hex": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-Fa-f]{6}$"
+                },
+                "font": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "slide_count": {
+                  "type": "integer",
+                  "minimum": 5,
+                  "maximum": 30
+                },
+                "body_pt": {
+                  "type": "number",
+                  "minimum": 18,
+                  "maximum": 36
+                },
+                "title_pt": {
+                  "type": "number",
+                  "minimum": 24,
+                  "maximum": 60
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "provenance": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field_path": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "origin": {
+                "type": "string",
+                "enum": [
+                  "policy",
+                  "task",
+                  "profile",
+                  "template",
+                  "domain",
+                  "app"
+                ]
+              },
+              "origin_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 1000
+              }
+            },
+            "required": [
+              "field_path",
+              "origin",
+              "origin_ref"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 300
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field_path": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "message": {
+                "type": "string",
+                "maxLength": 1000
+              },
+              "resolution": {
+                "type": "string",
+                "enum": [
+                  "applied",
+                  "needs_input",
+                  "rejected"
+                ]
+              }
+            },
+            "required": [
+              "field_path",
+              "message",
+              "resolution"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "knowledge_scope": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "knowledge_base_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "generation_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "document_version_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1,
+                "maxItems": 1000
+              }
+            },
+            "required": [
+              "knowledge_base_id",
+              "generation_id",
+              "document_version_ids"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 20
+        },
+        "snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "kind",
+        "schema_version",
+        "profile",
+        "domain",
+        "template",
+        "fields",
+        "provenance",
+        "conflicts",
+        "knowledge_scope",
+        "snapshot_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "DomainPackage": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "domain_package"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "domain_id": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "published",
+            "withdrawn"
+          ]
+        },
+        "topics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 128
+              },
+              "label": {
+                "type": "string",
+                "maxLength": 200
+              }
+            },
+            "required": [
+              "id",
+              "label"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 100
+        },
+        "content_types": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 128
+              },
+              "label": {
+                "type": "string",
+                "maxLength": 200
+              }
+            },
+            "required": [
+              "id",
+              "label"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 30
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source_id": {
+                "type": "string",
+                "maxLength": 128
+              },
+              "adapter_id": {
+                "type": "string",
+                "maxLength": 128
+              },
+              "adapter_version": {
+                "type": "string",
+                "maxLength": 128
+              },
+              "topic_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "minItems": 1,
+                "maxItems": 100
+              },
+              "content_type_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "minItems": 1,
+                "maxItems": 30
+              }
+            },
+            "required": [
+              "source_id",
+              "adapter_id",
+              "adapter_version",
+              "topic_ids",
+              "content_type_ids"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 100
+        },
+        "default_topic_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "minItems": 1,
+          "maxItems": 100
+        },
+        "default_content_type_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "minItems": 1,
+          "maxItems": 30
+        },
+        "summary_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "minItems": 1,
+          "maxItems": 20
+        },
+        "office_defaults": {
+          "type": "object",
+          "properties": {
+            "audience": {
+              "type": "string",
+              "maxLength": 300
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "tone": {
+              "type": "string",
+              "enum": [
+                "formal",
+                "concise",
+                "explanatory",
+                "training"
+              ]
+            },
+            "length": {
+              "type": "string",
+              "enum": [
+                "brief",
+                "standard",
+                "detailed"
+              ]
+            },
+            "terminology": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "term": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "preferred": {
+                    "type": "string",
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "term",
+                  "preferred"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0,
+              "maxItems": 100
+            },
+            "must_include": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "minItems": 0,
+              "maxItems": 50
+            },
+            "must_avoid": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "minItems": 0,
+              "maxItems": 50
+            },
+            "extra_instructions": {
+              "type": "string",
+              "maxLength": 4000
+            },
+            "word": {
+              "type": "object",
+              "properties": {
+                "heading_levels": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 3
+                },
+                "font": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "body_pt": {
+                  "type": "number",
+                  "minimum": 9,
+                  "maximum": 24
+                },
+                "page_size": {
+                  "type": "string",
+                  "enum": [
+                    "A4",
+                    "Letter"
+                  ]
+                },
+                "margin_mm": {
+                  "type": "number",
+                  "minimum": 10,
+                  "maximum": 40
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "excel": {
+              "type": "object",
+              "properties": {
+                "decimal_places": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "unit": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "date_format": {
+                  "type": "string",
+                  "enum": [
+                    "yyyy-mm-dd",
+                    "yyyy/mm/dd",
+                    "yyyy年mm月dd日"
+                  ]
+                },
+                "header_style": {
+                  "type": "string",
+                  "enum": [
+                    "plain",
+                    "light",
+                    "accent"
+                  ]
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "ppt": {
+              "type": "object",
+              "properties": {
+                "style": {
+                  "type": "string",
+                  "enum": [
+                    "minimal",
+                    "professional",
+                    "training"
+                  ]
+                },
+                "accent_hex": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-Fa-f]{6}$"
+                },
+                "font": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "slide_count": {
+                  "type": "integer",
+                  "minimum": 5,
+                  "maximum": 30
+                },
+                "body_pt": {
+                  "type": "number",
+                  "minimum": 18,
+                  "maximum": 36
+                },
+                "title_pt": {
+                  "type": "number",
+                  "minimum": 24,
+                  "maximum": 60
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "kind",
+        "schema_version",
+        "domain_id",
+        "version",
+        "name",
+        "description",
+        "state",
+        "topics",
+        "content_types",
+        "sources",
+        "default_topic_ids",
+        "default_content_type_ids",
+        "summary_fields",
+        "office_defaults",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "SubscriptionPlan": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "subscription_plan"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "plan_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "selections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain_id": {
+                "type": "string",
+                "maxLength": 128
+              },
+              "package_version": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "topic_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "minItems": 1,
+                "maxItems": 100
+              },
+              "content_type_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "minItems": 1,
+                "maxItems": 30
+              },
+              "keywords": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "minItems": 0,
+                "maxItems": 20
+              }
+            },
+            "required": [
+              "domain_id",
+              "package_version",
+              "topic_ids",
+              "content_type_ids",
+              "keywords"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 10
+        },
+        "timezone": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "local_time": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+        },
+        "resolved_source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "minItems": 1,
+          "maxItems": 10
+        },
+        "windows_notifications": {
+          "type": "boolean"
+        },
+        "effective_from": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "kind",
+        "schema_version",
+        "plan_id",
+        "revision",
+        "enabled",
+        "selections",
+        "timezone",
+        "local_time",
+        "resolved_source_ids",
+        "windows_notifications",
+        "effective_from"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "description": "Local product configuration. App validates catalog membership, references, field compatibility, precedence, hashes and permissions; no arbitrary code/config paths."
+}

@@ -183,3 +183,59 @@ Docs accompany every code change: update affected README and JSDoc contracts tog
 ## Vendoring policy
 
 `vendor/` packages are pinned source copies (manifest with upstream SHAs in [vendor/README.md](vendor/README.md)). Update via the sync procedure there; re-apply or retire the logged local modifications; rerun `pnpm run test && pnpm run build`.
+
+## QualityOffice AI 项目协作约定
+
+本文件整合QualityOffice-AI协作指引与上游DeepSeek-Harness规范；遵守用户当前指令和适用目录指引，操作范围以当前任务为准。
+
+### 1.开始前读取
+
+1.先查看Git状态、仓库结构、适用的`AGENTS.md`及[docs/progress.md](docs/progress.md)。
+
+2.确定有效规格目录：当前有效规格目录已迁入`docs/spec/`（参见[docs/spec/README.md](docs/spec/README.md)），唯一采用该位置，不让两套基准分别演化。
+
+3.阅读[docs/spec/README.md](docs/spec/README.md)、[docs/spec/开发Spec.md](docs/spec/开发Spec.md)相关章节，以及[docs/spec/tasks.json](docs/spec/tasks.json)当前工作包/依赖和[docs/spec/test_cases.json](docs/spec/test_cases.json)对应测试；按需读取`docs/spec/contracts/`、`docs/spec/data/`、`docs/spec/baseline/`。
+
+4.当前配套需求v0.3/Spec-v1.2；若实际文件更新，以用户确认后的新基准为准并同步进度记录。
+
+5.列出当前目标、必要改动和验证方式后开始执行；常规可逆实施按已授权任务推进，不为普通实现选择反复请求确认。
+
+### 2.产品与开发范围
+
+1.产品是跨领域的知识与办公助手，医药为首个可选领域预设；通用代码、导航、账号和助手角色不写死QA/QC。
+
+2.先交付Windows10/11(x64)；V0.1已确认的文件读取、OCR、联网来源、基础Office副本及会员闭环不得被悄悄删除。
+
+3.按工作包依赖开发，一次聚焦一个工作包；必要前置修复明确记录，不扩展到后续整个路线图。
+
+4.用户明确决定优先；Spec、契约、实现矛盾时记录并修正；影响已确认范围、原件保护、账本或数据处理路径时清楚报告影响。
+
+5.原始文件保留，处理与修改针对受控副本；模型工具不能绕过文件授权、额度或来源校验；知识库、办公要求、领域包和简洁界面按各自版本交付，不把规划写成已实现能力。
+
+### 3.上游与工程实现
+
+1.依据W00-1确定派生仓库方案并冻结实际dsh提交；保留上游历史、锁文件和构建约定，不在验证前批量重排源码、替换技术栈或强升依赖。
+
+2.保留并整合上游`AGENTS.md`、`README.md`、配置和许可，不用启动包覆盖丢弃。
+
+3.实现前查真实代码和API，禁止虚构插件接口、组件兼容性、执行结果或测试通过；候选依赖须经实际验证后进入发行清单。
+
+4.优先小范围清楚的改动，避免无关重构、批量格式化和推测性扩展；凭据使用本地环境/秘密管理，版本化示例仅含占位值，诊断与报告不写入真实密码、Key或企业文件正文。
+
+### 4.计划、进度与验证
+
+1.[docs/spec/tasks.json](docs/spec/tasks.json)、[docs/spec/test_cases.json](docs/spec/test_cases.json)是计划清单；实际状态写入[docs/progress.md](docs/progress.md)和`docs/reports/`独立报告。
+
+2.变更计划/契约时修改相应生成器再重新生成并检查，不把手改生成文件当唯一实现；实际检查命令从真实package配置、锁文件、CI、上游说明确认。
+
+3.运行与改动相关的检查及当前版本必需回归；[docs/spec/validate_spec.py](docs/spec/validate_spec.py)只验证基准包结构，单元/mock测试不能替代真实Windows安装、OCR、Office、模型和网站验证。
+
+4.每条验证记录命令、环境、检查对象commit/包hash、实际结果和证据路径；未执行标`not_run`，失败标`failed`；只有达到工作包完成条件才能标记完成。
+
+### 5.多工具交接、审查与入口
+
+1.Cursor、Codex使用相同的代码、规格和进度事实，同一工作目录同时只安排一个工具写入；切换工具前更新[docs/progress.md](docs/progress.md)（任务ID、分支、当前commit、未提交改动、已做验证、阻塞和下一步）。
+
+2.审查遵循[docs/review-policy.md](docs/review-policy.md)，新报告优先说明结果、验证和限制，禁止只写全部完成/测试通过却不给范围和证据。
+
+3.入口：首次启动[docs/START-HERE.md](docs/START-HERE.md)、首轮任务[docs/prompts/01-initialize.md](docs/prompts/01-initialize.md)、实际进度[docs/progress.md](docs/progress.md)、审查标准[docs/review-policy.md](docs/review-policy.md)、报告模板[docs/templates/work-package-report.md](docs/templates/work-package-report.md)。

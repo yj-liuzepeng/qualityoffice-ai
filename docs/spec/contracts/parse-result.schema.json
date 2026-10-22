@@ -1,0 +1,652 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "document_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "document_version_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "parser_version": {
+      "type": "string",
+      "maxLength": 128
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "partial",
+        "error",
+        "cancelled"
+      ]
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Segment"
+      },
+      "minItems": 0,
+      "maxItems": 100000
+    },
+    "coverage": {
+      "$ref": "#/$defs/Coverage"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Warning"
+      },
+      "minItems": 0,
+      "maxItems": 1000
+    },
+    "error": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "message": {
+              "type": "string",
+              "maxLength": 2000
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "document_metadata": {
+      "type": "object",
+      "properties": {
+        "sheets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 128
+              },
+              "visibility": {
+                "type": "string",
+                "enum": [
+                  "visible",
+                  "hidden",
+                  "veryHidden"
+                ]
+              },
+              "used_range": {
+                "type": "string",
+                "maxLength": 100
+              },
+              "merged_ranges": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "minItems": 0,
+                "maxItems": 10000
+              }
+            },
+            "required": [
+              "name",
+              "visibility",
+              "used_range",
+              "merged_ranges"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "unsupported_objects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "maxLength": 128
+              },
+              "locator": {
+                "$ref": "#/$defs/Locator"
+              },
+              "reason": {
+                "type": "string",
+                "maxLength": 500
+              }
+            },
+            "required": [
+              "type",
+              "locator",
+              "reason"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 10000
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "document_id",
+    "document_version_id",
+    "sha256",
+    "parser_version",
+    "status",
+    "segments",
+    "coverage",
+    "warnings",
+    "error"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qdesk:parse-result:1.0",
+  "$defs": {
+    "Locator": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "docx"
+            },
+            "part": {
+              "type": "string",
+              "maxLength": 256
+            },
+            "paragraph_index": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "table_index": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "row": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "column": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "preview_page": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "kind",
+            "part"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "required": [
+                "paragraph_index"
+              ]
+            },
+            {
+              "required": [
+                "table_index",
+                "row",
+                "column"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "pdf"
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "bbox": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0
+              },
+              "minItems": 4,
+              "maxItems": 4,
+              "description": "[x0,y0,x1,y1]; application validates x1>=x0,y1>=y0 and page/image bounds"
+            }
+          },
+          "required": [
+            "kind",
+            "page"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "xlsx"
+            },
+            "sheet": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "range": {
+              "type": "string",
+              "pattern": "^[A-Z]+[1-9][0-9]*(:[A-Z]+[1-9][0-9]*)?$"
+            }
+          },
+          "required": [
+            "kind",
+            "sheet",
+            "range"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "csv"
+            },
+            "record_start": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "record_end": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "physical_line_start": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "physical_line_end": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "kind",
+            "record_start",
+            "record_end"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "pptx"
+            },
+            "slide_id": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "slide_number": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "shape_id": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "notes": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "kind",
+            "slide_id",
+            "slide_number"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "image"
+            },
+            "frame": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "width": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "bbox": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0
+              },
+              "minItems": 4,
+              "maxItems": 4,
+              "description": "[x0,y0,x1,y1]; application validates x1>=x0,y1>=y0 and page/image bounds"
+            }
+          },
+          "required": [
+            "kind",
+            "frame",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "description": "Human page/frame/row/column references are 1-based; DOCX paragraph/table indices and rows/columns are 0-based. PDF bbox points (72dpi); image bbox pixels."
+    },
+    "Segment": {
+      "type": "object",
+      "properties": {
+        "segment_id": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "paragraph",
+            "heading",
+            "table",
+            "cell",
+            "slide_text",
+            "image_text",
+            "other"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 200000
+        },
+        "locator": {
+          "$ref": "#/$defs/Locator"
+        },
+        "confidence": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "extraction": {
+          "type": "string",
+          "enum": [
+            "native",
+            "ocr"
+          ]
+        },
+        "cell": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "formula": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 1000
+                },
+                "cached_value": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "cached_value_present": {
+                  "type": "boolean"
+                },
+                "data_type": {
+                  "type": "string",
+                  "enum": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "date",
+                    "error",
+                    "blank"
+                  ]
+                },
+                "number_format": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 1000
+                }
+              },
+              "required": [
+                "value",
+                "formula",
+                "cached_value",
+                "cached_value_present",
+                "data_type",
+                "number_format"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "object_metadata": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "shape_type": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "is_supported": {
+                  "type": "boolean"
+                },
+                "media_ref": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "slide_hidden": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "shape_type",
+                "is_supported",
+                "media_ref",
+                "slide_hidden"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "segment_id",
+        "order",
+        "kind",
+        "text",
+        "locator",
+        "extraction"
+      ],
+      "additionalProperties": false
+    },
+    "Warning": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "locator": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Locator"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "Coverage": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "enum": [
+            "pages",
+            "slides",
+            "records",
+            "cells",
+            "paragraphs",
+            "frames"
+          ]
+        },
+        "total_units": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "processed_units": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "selected_ranges": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "minItems": 0,
+          "maxItems": 500
+        },
+        "omitted": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "range": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "reason": {
+                "type": "string",
+                "maxLength": 500
+              }
+            },
+            "required": [
+              "range",
+              "reason"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 500
+        },
+        "complete": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "unit",
+        "total_units",
+        "processed_units",
+        "selected_ranges",
+        "omitted",
+        "complete"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

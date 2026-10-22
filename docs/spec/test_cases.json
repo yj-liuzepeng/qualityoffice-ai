@@ -1,0 +1,4198 @@
+{
+  "schema_version": "1.0",
+  "all_results": "not_run",
+  "tests": [
+    {
+      "id": "TC-001",
+      "title": "提交与依赖可追溯",
+      "task_id": "W00-1",
+      "cycle": "C00",
+      "requirement_ids": [
+        "BASE-01",
+        "ARCH-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "官方仓库可访问，Windows 构建机就绪",
+      "steps": [
+        "从记录提交重新安装锁定依赖",
+        "检查全部候选组件来源"
+      ],
+      "expected": [
+        "不存在 master/latest 浮动引用",
+        "提交和资产 hash 可复核"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-002",
+      "title": "不兼容插件不被强行启用",
+      "task_id": "W00-1",
+      "cycle": "C00",
+      "requirement_ids": [
+        "BASE-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "准备 engines 不匹配样本",
+      "steps": [
+        "尝试纳入发行配置",
+        "执行兼容预检"
+      ],
+      "expected": [
+        "预检失败并列出不匹配",
+        "不会仅改版本声明绕过"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-003",
+      "title": "许可与运行资产清单完整",
+      "task_id": "W00-1",
+      "cycle": "C00",
+      "requirement_ids": [
+        "ARCH-01"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "选择拟分发的解析/OCR/Office 组合",
+      "steps": [
+        "核对解释器、语言数据、字体和第三方 notices"
+      ],
+      "expected": [
+        "每项有来源版本许可及分发处理",
+        "未知项阻断冻结"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-004",
+      "title": "无开发环境安装运行",
+      "task_id": "W00-2",
+      "cycle": "C00",
+      "requirement_ids": [
+        "BASE-02",
+        "OFF-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "Win10/11 x64 干净镜像，无 Node/Python/Office",
+      "steps": [
+        "安装包安装",
+        "重启并读取扫描件",
+        "生成和预览 Office 副本"
+      ],
+      "expected": [
+        "无需手工安装开发工具",
+        "所有必需资产在包中或受控安装"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-005",
+      "title": "OCR资产离线可用",
+      "task_id": "W00-2",
+      "cycle": "C00",
+      "requirement_ids": [
+        "FILE-03"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "本地 OCR 安装资产齐全，断开网络",
+      "steps": [
+        "OCR 中英文清晰图片及混合扫描 PDF"
+      ],
+      "expected": [
+        "输出文字、页号和状态",
+        "不会暗调云视觉"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-006",
+      "title": "限制与复杂样本可见",
+      "task_id": "W00-2",
+      "cycle": "C00",
+      "requirement_ids": [
+        "NFR-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "超页数/像素/解压量文件",
+      "steps": [
+        "分别导入并选择缩小处理范围"
+      ],
+      "expected": [
+        "超限前拒绝或显式选择范围",
+        "不会伪称全文"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-007",
+      "title": "原件及外部目录不可写",
+      "task_id": "W00-3",
+      "cycle": "C00",
+      "requirement_ids": [
+        "FILE-04",
+        "ARCH-02"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "源文件/外部探针记录 hash，工具代理已部署",
+      "steps": [
+        "请求修改副本",
+        "注入外部路径和命令",
+        "结束后复核源件"
+      ],
+      "expected": [
+        "源件hash不变",
+        "越界和命令被拒绝",
+        "正常副本可生成"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-008",
+      "title": "硬链接与reparse别名拒绝",
+      "task_id": "W00-3",
+      "cycle": "C00",
+      "requirement_ids": [
+        "FILE-04",
+        "NFR-02"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "准备指向源文件的硬链接/junction/符号链接样本",
+      "steps": [
+        "尝试作为可写输入或工作根",
+        "检查句柄最终路径"
+      ],
+      "expected": [
+        "拒绝别名扩大权限",
+        "不改用户原目录ACL"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-009",
+      "title": "隔离不可用不降级",
+      "task_id": "W00-3",
+      "cycle": "C00",
+      "requirement_ids": [
+        "ARCH-02"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "模拟 ACL 授权或固定引擎启动失败",
+      "steps": [
+        "启动受影响工作流",
+        "检查子进程和结果"
+      ],
+      "expected": [
+        "返回EXECUTION_UNAVAILABLE",
+        "无不受限替代进程"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-010",
+      "title": "隐藏入口不可绕过",
+      "task_id": "W01-1",
+      "cycle": "C01",
+      "requirement_ids": [
+        "BASE-05"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "用户release安装包",
+      "steps": [
+        "枚举菜单快捷键路由协议",
+        "尝试打开终端/插件管理/DevTools"
+      ],
+      "expected": [
+        "全部技术入口不可达",
+        "正常任务功能可用"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-011",
+      "title": "与原版及调试版独立",
+      "task_id": "W01-1",
+      "cycle": "C01",
+      "requirement_ids": [
+        "BASE-05"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "同机安装原版、产品用户版、debug版",
+      "steps": [
+        "创建各自任务",
+        "更新或卸载其中一个"
+      ],
+      "expected": [
+        "其他应用数据与更新源不受影响"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-012",
+      "title": "未发布功能不露空入口",
+      "task_id": "W01-1",
+      "cycle": "C01",
+      "requirement_ids": [
+        "BASE-05"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "V0.1功能配置",
+      "steps": [
+        "检查首页导航和设置",
+        "检查禁用上游账号路径"
+      ],
+      "expected": [
+        "仅显示V0.1业务入口",
+        "无误导市场或官方云依赖"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-013",
+      "title": "会话继续与任务记录",
+      "task_id": "W01-2",
+      "cycle": "C01",
+      "requirement_ids": [
+        "BASE-03"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "已有会话及两次attempt",
+      "steps": [
+        "流式提问",
+        "停止",
+        "重试",
+        "重启应用继续会话"
+      ],
+      "expected": [
+        "会话可继续",
+        "每次执行有独立attempt",
+        "历史关联正确"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-014",
+      "title": "取消与迟到成功竞争",
+      "task_id": "W01-2",
+      "cycle": "C01",
+      "requirement_ids": [
+        "BASE-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "运行中的工具和模型mock",
+      "steps": [
+        "取消同时发送成功回调",
+        "重复发送终态事件"
+      ],
+      "expected": [
+        "终态不会由cancelled变success",
+        "无重复产物提交"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-015",
+      "title": "强制退出后不重放付费调用",
+      "task_id": "W01-2",
+      "cycle": "C01",
+      "requirement_ids": [
+        "BASE-03",
+        "BASE-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "进行中任务有已派发run",
+      "steps": [
+        "强杀应用",
+        "重启并查看历史和网关"
+      ],
+      "expected": [
+        "attempt为interrupted",
+        "查询原run",
+        "无新派发"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-016",
+      "title": "完整复制与源变化检测",
+      "task_id": "W01-3",
+      "cycle": "C01",
+      "requirement_ids": [
+        "FILE-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "文件选择与拖拽、可修改大文件",
+      "steps": [
+        "导入相同文件",
+        "复制期间改源",
+        "查看结果"
+      ],
+      "expected": [
+        "正常为字节副本且有hash",
+        "变化时SOURCE_CHANGED"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-017",
+      "title": "非法工具字段和路径被拒绝",
+      "task_id": "W01-3",
+      "cycle": "C01",
+      "requirement_ids": [
+        "ARCH-02",
+        "ARCH-03"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "模型构造未知字段/绝对路径/脚本参数",
+      "steps": [
+        "提交工具计划",
+        "访问未授权文档ID"
+      ],
+      "expected": [
+        "schema拒绝且不执行",
+        "不存在路径透传"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-018",
+      "title": "定位与旧源失效",
+      "task_id": "W01-3",
+      "cycle": "C01",
+      "requirement_ids": [
+        "FILE-05"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "各locator类型的最小结构样本",
+      "steps": [
+        "打开引用",
+        "删除本地原文后再次打开"
+      ],
+      "expected": [
+        "定位正确",
+        "失效明确提示且不伪造路径"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-019",
+      "title": "文档表格与页/页签定位",
+      "task_id": "W02-1",
+      "cycle": "C02",
+      "requirement_ids": [
+        "FILE-02",
+        "FILE-05"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "DOCX/PDF/PPTX中文及复杂fixture",
+      "steps": [
+        "按段/页/幻灯片解析",
+        "对照人工oracle",
+        "打开来源"
+      ],
+      "expected": [
+        "常见文本表格正确",
+        "未支持对象有警告",
+        "定位可打开"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-020",
+      "title": "Excel和CSV语义正确",
+      "task_id": "W02-1",
+      "cycle": "C02",
+      "requirement_ids": [
+        "FILE-02"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "公式无缓存/隐藏表/合并格与GB18030带引号换行CSV",
+      "steps": [
+        "读取区域",
+        "检查值公式缓存",
+        "选择歧义编码"
+      ],
+      "expected": [
+        "公式不冒充结果",
+        "CSV记录对齐",
+        "编码不明请求选择"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-021",
+      "title": "加密损坏超限与压缩炸弹",
+      "task_id": "W02-1",
+      "cycle": "C02",
+      "requirement_ids": [
+        "FILE-02",
+        "NFR-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "对应失败fixture",
+      "steps": [
+        "逐个导入",
+        "检查进程/资源/coverage"
+      ],
+      "expected": [
+        "正确错误分类",
+        "不进入正常总结",
+        "限制及时生效"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-022",
+      "title": "清晰OCR质量",
+      "task_id": "W02-2",
+      "cycle": "C02",
+      "requirement_ids": [
+        "FILE-03"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "20页清晰印刷中英文200-300dpi真值集",
+      "steps": [
+        "断网OCR",
+        "逐字计算CER",
+        "核对原页"
+      ],
+      "expected": [
+        "CER目标≤5%",
+        "页码正确",
+        "无云调用"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-023",
+      "title": "混合和失败页处理",
+      "task_id": "W02-2",
+      "cycle": "C02",
+      "requirement_ids": [
+        "FILE-03",
+        "ARCH-03"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "文本+扫描+损坏渲染页PDF",
+      "steps": [
+        "解析所有页",
+        "查看coverage及重复段"
+      ],
+      "expected": [
+        "文字页不重复",
+        "失败页列明",
+        "其他页结果保留"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-024",
+      "title": "低清旋转和取消",
+      "task_id": "W02-2",
+      "cycle": "C02",
+      "requirement_ids": [
+        "FILE-03"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "低清/旋转/手写样本与长OCR任务",
+      "steps": [
+        "运行",
+        "查看提示",
+        "中途取消"
+      ],
+      "expected": [
+        "低质量提示复核",
+        "取消不标成功",
+        "worker被回收"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-025",
+      "title": "基础Office端到端",
+      "task_id": "W02-3",
+      "cycle": "C02",
+      "requirement_ids": [
+        "OFF-01",
+        "FILE-04"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "文本/表格输入及默认模板",
+      "steps": [
+        "生成DOCX/XLSX/PPTX",
+        "重新打开",
+        "运行实际预览"
+      ],
+      "expected": [
+        "可编辑且结构有效",
+        "产物关联任务来源",
+        "原件不变"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-026",
+      "title": "同名输出和取消保护",
+      "task_id": "W02-3",
+      "cycle": "C02",
+      "requirement_ids": [
+        "FILE-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "已存在产物、写入中任务",
+      "steps": [
+        "再次生成同名",
+        "中途取消",
+        "检查正式产物目录"
+      ],
+      "expected": [
+        "不静默覆盖",
+        "取消临时稿不被当成功产物"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-027",
+      "title": "预览失败单独呈现",
+      "task_id": "W02-3",
+      "cycle": "C02",
+      "requirement_ids": [
+        "FILE-06"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "可生成文件但禁用预览引擎",
+      "steps": [
+        "生成产物",
+        "点击打开和另存"
+      ],
+      "expected": [
+        "保留可编辑文件",
+        "提示预览未完成而非全成功"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-028",
+      "title": "激活过期与一次性",
+      "task_id": "W03-1",
+      "cycle": "C03",
+      "requirement_ids": [
+        "ACC-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "正常/过期/已使用激活码",
+      "steps": [
+        "激活设置密码",
+        "重复激活",
+        "尝试错误密码"
+      ],
+      "expected": [
+        "一次性有效",
+        "过期拒绝",
+        "失败限流且无敏感日志"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-029",
+      "title": "权益由服务端判定",
+      "task_id": "W03-1",
+      "cycle": "C03",
+      "requirement_ids": [
+        "ACC-03"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "过期/停用/无额度用户，客户端时钟可改",
+      "steps": [
+        "改客户端时间",
+        "请求模型",
+        "打开历史导出"
+      ],
+      "expected": [
+        "云请求按服务端拒绝",
+        "本地历史与导出仍可用"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-030",
+      "title": "会话轮换设备与越权",
+      "task_id": "W03-1",
+      "cycle": "C03",
+      "requirement_ids": [
+        "NFR-02",
+        "ACC-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "普通用户2设备与管理员账号",
+      "steps": [
+        "刷新token并重放旧token",
+        "第三设备登录",
+        "访问管理API"
+      ],
+      "expected": [
+        "旧token撤销",
+        "设备上限生效",
+        "普通用户403且无数据泄漏"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-031",
+      "title": "平台模型开箱即用",
+      "task_id": "W03-2",
+      "cycle": "C03",
+      "requirement_ids": [
+        "ACC-02",
+        "ARCH-04"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "已激活有额度账号和真实受控路由",
+      "steps": [
+        "登录后提问",
+        "调用文件工具",
+        "检查配置与包"
+      ],
+      "expected": [
+        "无需API Key",
+        "文本和工具调用完成",
+        "包与worker无共享Key"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-032",
+      "title": "分片工具JSON不提前执行",
+      "task_id": "W03-2",
+      "cycle": "C03",
+      "requirement_ids": [
+        "ARCH-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "mock将一个工具参数拆成多片并发送异常片",
+      "steps": [
+        "接收SSE",
+        "检查执行时机",
+        "发送完整final"
+      ],
+      "expected": [
+        "仅完整且schema合法的工具被执行",
+        "错误片不执行"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-033",
+      "title": "断流查询不重派发",
+      "task_id": "W03-2",
+      "cycle": "C03",
+      "requirement_ids": [
+        "ARCH-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "真实或mock已派发但客户端断开",
+      "steps": [
+        "重新查询run状态",
+        "重复原request_id",
+        "取消"
+      ],
+      "expected": [
+        "只存在一次上游请求",
+        "本地显示可核对状态"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-034",
+      "title": "并发预留不超余额",
+      "task_id": "W03-3",
+      "cycle": "C03",
+      "requirement_ids": [
+        "ACC-05"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "总额度150，100并发各申请100，账号并发槽2，已接收调用保持未完成",
+      "steps": [
+        "同时创建请求",
+        "查询grant/allocations/run"
+      ],
+      "expected": [
+        "成功预留最多1个且总和≤150",
+        "无负可用",
+        "并发槽限制生效"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-035",
+      "title": "同键同体与异体",
+      "task_id": "W03-3",
+      "cycle": "C03",
+      "requirement_ids": [
+        "ACC-05",
+        "ARCH-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "同用户同Idempotency-Key",
+      "steps": [
+        "重复同body",
+        "换body",
+        "服务重启后再重放"
+      ],
+      "expected": [
+        "同体返回既有run",
+        "异体409",
+        "不再次派发"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-036",
+      "title": "互斥token类别一次取整",
+      "task_id": "W03-3",
+      "cycle": "C03",
+      "requirement_ids": [
+        "ACC-04"
+      ],
+      "level": "unit",
+      "priority": "P0",
+      "preconditions": "人工计算cached/uncached/output及reasoning子项真值",
+      "steps": [
+        "按费率结算预估",
+        "改变路由费率后查询原快照"
+      ],
+      "expected": [
+        "整数公式相符",
+        "reasoning不双计",
+        "历史快照不变"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-037",
+      "title": "取消和重复回调只结算一次",
+      "task_id": "W04-1",
+      "cycle": "C04",
+      "requirement_ids": [
+        "ACC-04",
+        "ACC-05"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "已派发run有真实usage、重复final",
+      "steps": [
+        "取消",
+        "发送两次相同usage",
+        "查询ledger和余额"
+      ],
+      "expected": [
+        "根据实际usage一次扣减",
+        "预留释放",
+        "无重复账本"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-038",
+      "title": "未知用量72h与迟到数据",
+      "task_id": "W04-1",
+      "cycle": "C04",
+      "requirement_ids": [
+        "ACC-05"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "run已派发但usage不可得，测试时钟",
+      "steps": [
+        "进入pending",
+        "推进72h",
+        "再送迟到usage"
+      ],
+      "expected": [
+        "未知时保留且阻断新请求",
+        "72h释放",
+        "迟到只记平台成本"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-039",
+      "title": "到期grant及预留不足",
+      "task_id": "W04-1",
+      "cycle": "C04",
+      "requirement_ids": [
+        "ACC-05",
+        "BIZ-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "已预留grant到期，实际量超过预留",
+      "steps": [
+        "结算",
+        "核对可用/扣减/平台吸收和告警"
+      ],
+      "expected": [
+        "原预留允许结算",
+        "释放过期额不可用",
+        "超出平台承担"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-040",
+      "title": "人工开通闭环",
+      "task_id": "W04-2",
+      "cycle": "C04",
+      "requirement_ids": [
+        "ADM-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "管理员和未激活用户",
+      "steps": [
+        "创建邀请",
+        "设置会员",
+        "发额度",
+        "用户登录完成任务"
+      ],
+      "expected": [
+        "权益即时生效",
+        "用户可见消耗",
+        "后台能核对"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-041",
+      "title": "调整幂等审计和冲突",
+      "task_id": "W04-2",
+      "cycle": "C04",
+      "requirement_ids": [
+        "ADM-02"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "两个管理员同版本调整同用户",
+      "steps": [
+        "同时改会员",
+        "重复发额度请求",
+        "尝试撤销预留额"
+      ],
+      "expected": [
+        "冲突409",
+        "重复不重发",
+        "预留/已消费额不能直接撤销",
+        "审计完整"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-042",
+      "title": "收费设计有证据",
+      "task_id": "W04-2",
+      "cycle": "C04",
+      "requirement_ids": [
+        "BIZ-01"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "至少一组实际调用/搜索成本与使用样本",
+      "steps": [
+        "编制候选套餐、到期和预算表",
+        "核对未知项"
+      ],
+      "expected": [
+        "列清成本假设与数据",
+        "未实测不宣称盈利",
+        "无自动收费"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-043",
+      "title": "公开检索与可核对来源",
+      "task_id": "W04-3",
+      "cycle": "C04",
+      "requirement_ids": [
+        "WEB-01",
+        "WEB-02"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "正常网页、搜索摘要及失效网页",
+      "steps": [
+        "检索质量法规",
+        "打开来源",
+        "模拟正文提取失败"
+      ],
+      "expected": [
+        "标题链接时间可见",
+        "摘要/正文区分",
+        "失败不伪造来源"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-044",
+      "title": "法规未知现行性不杜撰",
+      "task_id": "W04-3",
+      "cycle": "C04",
+      "requirement_ids": [
+        "WEB-03"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "缺发布日期/有冲突版本的官方材料",
+      "steps": [
+        "要求判断现行法规",
+        "查看答复与引用"
+      ],
+      "expected": [
+        "提示核对生效/地域/版本",
+        "未确认状态明示"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-045",
+      "title": "SSRF提示注入和凭据",
+      "task_id": "W04-3",
+      "cycle": "C04",
+      "requirement_ids": [
+        "WEB-04",
+        "NFR-02"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "私网/IPv6回环/重定向/DNS重绑定及恶意正文mock",
+      "steps": [
+        "请求抓取",
+        "正文要求执行命令/上传本地文件"
+      ],
+      "expected": [
+        "每跳阻断私网",
+        "不执行网页指令",
+        "无共享凭据泄漏"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-046",
+      "title": "错误可追踪",
+      "task_id": "W05-1",
+      "cycle": "C05",
+      "requirement_ids": [
+        "OPS-01",
+        "NFR-03"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "解析/搜索/模型/结算各一条失败",
+      "steps": [
+        "从用户错误ID定位步骤与服务端记录"
+      ],
+      "expected": [
+        "可关联task/attempt/run",
+        "业务错误类别准确"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-047",
+      "title": "日志不含敏感探针",
+      "task_id": "W05-1",
+      "cycle": "C05",
+      "requirement_ids": [
+        "OPS-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "问题/文件/密码/token中加入独特探针",
+      "steps": [
+        "完成任务与故障",
+        "扫描日志/诊断/APM记录"
+      ],
+      "expected": [
+        "默认不含正文/凭据/完整源路径",
+        "敏感探针无泄漏"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-048",
+      "title": "附加样本须列具体文件",
+      "task_id": "W05-1",
+      "cycle": "C05",
+      "requirement_ids": [
+        "OPS-01"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "默认诊断与含附件诊断",
+      "steps": [
+        "导出默认包",
+        "选择单个附件再导出"
+      ],
+      "expected": [
+        "默认无文件正文",
+        "只含明确选择的附件"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-049",
+      "title": "升级保留本地数据",
+      "task_id": "W05-2",
+      "cycle": "C05",
+      "requirement_ids": [
+        "OPS-02",
+        "REL-02"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "旧版本有会话、输入、产物与WAL写入",
+      "steps": [
+        "安装新版",
+        "执行迁移",
+        "检查历史和引用"
+      ],
+      "expected": [
+        "数据一致可打开",
+        "schema版本正确",
+        "无静默丢失"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-050",
+      "title": "迁移中断完整回退",
+      "task_id": "W05-2",
+      "cycle": "C05",
+      "requirement_ids": [
+        "REL-02"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "迁移过程可注入故障/磁盘不足",
+      "steps": [
+        "中断升级",
+        "恢复旧包和一致数据快照"
+      ],
+      "expected": [
+        "旧版可用",
+        "无新旧schema混跑",
+        "错误可解释"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-051",
+      "title": "卸载不删除原件",
+      "task_id": "W05-2",
+      "cycle": "C05",
+      "requirement_ids": [
+        "OPS-02"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "产品资料及外部源件已存在",
+      "steps": [
+        "默认卸载",
+        "选择清理产品数据再卸载"
+      ],
+      "expected": [
+        "默认保留资料",
+        "显式清理也不触及外部原件"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-052",
+      "title": "Win10/11完整核心旅程",
+      "task_id": "W05-3",
+      "cycle": "C05",
+      "requirement_ids": [
+        "BASE-02",
+        "REL-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "两系统最终候选包，无开发环境/Office",
+      "steps": [
+        "安装登录",
+        "七类输入",
+        "OCR/搜索",
+        "Office副本",
+        "额度与退出恢复"
+      ],
+      "expected": [
+        "V0.1所有P0通过",
+        "无隐藏环境依赖"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-053",
+      "title": "路径区域权限与性能",
+      "task_id": "W05-3",
+      "cycle": "C05",
+      "requirement_ids": [
+        "NFR-01",
+        "FILE-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "中文/空格用户名，240/280字符路径、只读/被占用输入，标准用户参考硬件",
+      "steps": [
+        "读取生成导出",
+        "验证可读只读源与拒绝读取锁定源",
+        "测10次冷启动/取消/内存"
+      ],
+      "expected": [
+        "可读取长路径及只读输入正常",
+        "独占锁定给FILE_IN_USE",
+        "源hash不变",
+        "性能按规范报告"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-054",
+      "title": "发行凭据及清单核对",
+      "task_id": "W05-3",
+      "cycle": "C05",
+      "requirement_ids": [
+        "REL-01",
+        "NFR-02"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "最终包和完整清单",
+      "steps": [
+        "扫描包配置",
+        "核对hash/更新源/许可/签名策略"
+      ],
+      "expected": [
+        "无调试凭据",
+        "无上游自动更新",
+        "缺项阻断发行"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-055",
+      "title": "创建批量导入与状态",
+      "task_id": "W06-1",
+      "cycle": "C06",
+      "requirement_ids": [
+        "KB-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "含成功/失败/重复文件批次",
+      "steps": [
+        "建库",
+        "导入",
+        "重启查看状态"
+      ],
+      "expected": [
+        "数量和逐项状态一致",
+        "无失败项伪装ready"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-056",
+      "title": "相同内容不同来源",
+      "task_id": "W06-1",
+      "cycle": "C06",
+      "requirement_ids": [
+        "KB-02"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "两个文件名/来源同hash及修改后版本",
+      "steps": [
+        "导入并设置版本",
+        "检查对象与来源关联"
+      ],
+      "expected": [
+        "文件对象可复用",
+        "来源/版本独立",
+        "不混淆现行标注"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-057",
+      "title": "现行历史未知的明确标注",
+      "task_id": "W06-1",
+      "cycle": "C06",
+      "requirement_ids": [
+        "KB-02"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "同主题3个版本，日期部分未知",
+      "steps": [
+        "用户设置current/historical",
+        "查看默认范围"
+      ],
+      "expected": [
+        "标注归属用户",
+        "未知日期为空",
+        "历史不默认混入"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-058",
+      "title": "token边界与结构定位",
+      "task_id": "W06-2",
+      "cycle": "C06",
+      "requirement_ids": [
+        "KB-03"
+      ],
+      "level": "unit",
+      "priority": "P0",
+      "preconditions": "长段/表格/中文英文缩写fixture",
+      "steps": [
+        "切块并计算包含前缀特殊token的总长度"
+      ],
+      "expected": [
+        "所有输入≤512token",
+        "正文/标题上限生效",
+        "表头区域可追溯"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-059",
+      "title": "离线嵌入一致",
+      "task_id": "W06-2",
+      "cycle": "C06",
+      "requirement_ids": [
+        "KB-03"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "冻结模型资产，网络关闭",
+      "steps": [
+        "对相同文档重复建向量",
+        "核对ID和维度"
+      ],
+      "expected": [
+        "384维归一化",
+        "相同参数chunk ID稳定",
+        "无外传"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-060",
+      "title": "模型资产变化触发重建",
+      "task_id": "W06-2",
+      "cycle": "C06",
+      "requirement_ids": [
+        "KB-03"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "旧索引与新tokenizer/model hash",
+      "steps": [
+        "尝试混入向量",
+        "切换模型版本"
+      ],
+      "expected": [
+        "拒绝混用",
+        "必须新建generation后切换"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-061",
+      "title": "新代未完成不参与检索",
+      "task_id": "W06-3",
+      "cycle": "C06",
+      "requirement_ids": [
+        "KB-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "已有有效代，新代只写一半",
+      "steps": [
+        "查询",
+        "中断构建",
+        "重启"
+      ],
+      "expected": [
+        "旧代继续可查",
+        "未完成代不激活"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-062",
+      "title": "切换原子且计数一致",
+      "task_id": "W06-3",
+      "cycle": "C06",
+      "requirement_ids": [
+        "KB-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "新代文档/chunk/向量数量可控",
+      "steps": [
+        "激活时注入事务前后故障"
+      ],
+      "expected": [
+        "仅旧或新完整代可见",
+        "无半数向量映射错位"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-063",
+      "title": "中文缩写与编号检索",
+      "task_id": "W06-3",
+      "cycle": "C06",
+      "requirement_ids": [
+        "KB-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "SOP编号/中文词/英文缩写数据",
+      "steps": [
+        "预分词建FTS",
+        "查询关键词"
+      ],
+      "expected": [
+        "词法可核对",
+        "编号英文不过度拆坏",
+        "不依赖unicode61自动中文分词"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-064",
+      "title": "跨库和历史范围隔离",
+      "task_id": "W07-1",
+      "cycle": "C07",
+      "requirement_ids": [
+        "KB-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "两个库同主题且含删除/历史文档",
+      "steps": [
+        "仅选择库A查询",
+        "故意让库B向量得分高"
+      ],
+      "expected": [
+        "结果仅所选有效范围",
+        "无跨库泄漏"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-065",
+      "title": "RRF与去重确定",
+      "task_id": "W07-1",
+      "cycle": "C07",
+      "requirement_ids": [
+        "KB-04"
+      ],
+      "level": "unit",
+      "priority": "P0",
+      "preconditions": "人工设置关键词和向量排名",
+      "steps": [
+        "执行融合",
+        "核对RRF及重复chunk"
+      ],
+      "expected": [
+        "score与1/(60+rank)相符",
+        "同chunk仅一次"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-066",
+      "title": "上下文及大索引性能",
+      "task_id": "W07-1",
+      "cycle": "C07",
+      "requirement_ids": [
+        "KB-04",
+        "NFR-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "100k chunk标准基准集",
+      "steps": [
+        "执行50次热检索",
+        "记录TopK/输入token/延迟"
+      ],
+      "expected": [
+        "默认最多6块/8000token",
+        "P95目标≤2s且资源有记录"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-067",
+      "title": "回答引用真实片段",
+      "task_id": "W07-2",
+      "cycle": "C07",
+      "requirement_ids": [
+        "KB-05"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "有可回答资料及标准要点",
+      "steps": [
+        "提问",
+        "核对每个关键主张与定位"
+      ],
+      "expected": [
+        "引用存在且支持主张",
+        "模型虚构source_id被拦截"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-068",
+      "title": "无依据和矛盾版本",
+      "task_id": "W07-2",
+      "cycle": "C07",
+      "requirement_ids": [
+        "KB-05"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "不可答题与冲突资料",
+      "steps": [
+        "分别问答",
+        "查看来源和措辞"
+      ],
+      "expected": [
+        "拒答或限定范围",
+        "冲突展示",
+        "不凭记忆补成库内依据"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-069",
+      "title": "联网补充边界",
+      "task_id": "W07-2",
+      "cycle": "C07",
+      "requirement_ids": [
+        "KB-05"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "知识问答无足够材料",
+      "steps": [
+        "先默认提问",
+        "再显式开启补充联网"
+      ],
+      "expected": [
+        "默认无联网",
+        "开启后区分本地/网页证据"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-070",
+      "title": "导入局部成功可理解",
+      "task_id": "W07-3",
+      "cycle": "C07",
+      "requirement_ids": [
+        "KB-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "批次部分索引失败",
+      "steps": [
+        "查看列表",
+        "重试单文件",
+        "发起范围问答"
+      ],
+      "expected": [
+        "就绪/失败数清楚",
+        "未就绪文档不冒充可用"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-071",
+      "title": "版本比较与用户标注",
+      "task_id": "W07-3",
+      "cycle": "C07",
+      "requirement_ids": [
+        "KB-02"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "现行/历史/未知版本",
+      "steps": [
+        "选择比较",
+        "查看标注来源和日期"
+      ],
+      "expected": [
+        "版本并列可见",
+        "不自动宣称官方现行"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-072",
+      "title": "多格式引用跳转",
+      "task_id": "W07-3",
+      "cycle": "C07",
+      "requirement_ids": [
+        "KB-05"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "PDF/DOCX/XLSX/PPTX的知识问答",
+      "steps": [
+        "逐条点击引用",
+        "检查位置与版本"
+      ],
+      "expected": [
+        "打开正确版本和locator",
+        "DOCX预览页明确标注"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-073",
+      "title": "新版本成功后切换",
+      "task_id": "W08-1",
+      "cycle": "C08",
+      "requirement_ids": [
+        "KB-02",
+        "KB-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "旧版可检索，新版有明确差异",
+      "steps": [
+        "更新并选取代现行",
+        "查询旧新事实"
+      ],
+      "expected": [
+        "切换后仅新默认版本",
+        "历史仍可明确选择"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-074",
+      "title": "更新失败保留可用版",
+      "task_id": "W08-1",
+      "cycle": "C08",
+      "requirement_ids": [
+        "KB-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "新版嵌入中模拟失败",
+      "steps": [
+        "更新",
+        "查询",
+        "重启并重试"
+      ],
+      "expected": [
+        "旧版持续可用",
+        "新版失败清楚",
+        "重试幂等"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-075",
+      "title": "外部文件改变需显式更新",
+      "task_id": "W08-1",
+      "cycle": "C08",
+      "requirement_ids": [
+        "KB-02"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "源文件已在库，外部修改",
+      "steps": [
+        "不点击更新先问",
+        "再手动更新"
+      ],
+      "expected": [
+        "先使用原锁定版本",
+        "未自动扫描上传",
+        "更新后新版本生效"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-076",
+      "title": "删除即时不可检索",
+      "task_id": "W08-2",
+      "cycle": "C08",
+      "requirement_ids": [
+        "KB-07"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "目标文档已被FTS和向量索引命中",
+      "steps": [
+        "删除",
+        "在物理清理前立即查询"
+      ],
+      "expected": [
+        "所有相关范围不再返回已删内容",
+        "旧向量被二次过滤"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-077",
+      "title": "共享对象不误删",
+      "task_id": "W08-2",
+      "cycle": "C08",
+      "requirement_ids": [
+        "KB-07"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "同对象被两个库及任务引用",
+      "steps": [
+        "删除一个库关联",
+        "再逐步删除剩余引用"
+      ],
+      "expected": [
+        "其他库/任务可用",
+        "引用清零才回收文件"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-078",
+      "title": "清理失败重启和旧引用",
+      "task_id": "W08-2",
+      "cycle": "C08",
+      "requirement_ids": [
+        "KB-07"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "强制删除文件失败且历史回答有引用",
+      "steps": [
+        "删除",
+        "重启",
+        "打开旧引用",
+        "恢复清理条件"
+      ],
+      "expected": [
+        "记录并重试",
+        "旧引用显示已删除不可打开",
+        "不伪造原文"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-079",
+      "title": "保留集达到各自阈值",
+      "task_id": "W08-3",
+      "cycle": "C08",
+      "requirement_ids": [
+        "KB-08"
+      ],
+      "level": "evaluation",
+      "priority": "P0",
+      "preconditions": "≥120标注题，≥40保留题，金标准已评审",
+      "steps": [
+        "锁定版本执行评测",
+        "分别计算指标"
+      ],
+      "expected": [
+        "Recall@5≥90%",
+        "引用存在100%/支持≥95%",
+        "无依据拒答≥90%"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-080",
+      "title": "正确性不被性能平均掩盖",
+      "task_id": "W08-3",
+      "cycle": "C08",
+      "requirement_ids": [
+        "NFR-01",
+        "KB-08"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "范围/删除/性能数据",
+      "steps": [
+        "分别审查硬不变量和P95/峰值内存"
+      ],
+      "expected": [
+        "范围删除100%通过",
+        "性能独立报告，未达标需处理"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-081",
+      "title": "V0.2升级回归",
+      "task_id": "W08-3",
+      "cycle": "C08",
+      "requirement_ids": [
+        "REL-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "有V0.1历史文件与旧会话的机器",
+      "steps": [
+        "升级",
+        "核心回归",
+        "导入查询更新删除完整旅程"
+      ],
+      "expected": [
+        "旧能力不退化",
+        "库闭环通过",
+        "报告对应最终包hash"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-082",
+      "title": "官方栏目真实采集",
+      "task_id": "W09-1",
+      "cycle": "C09",
+      "requirement_ids": [
+        "NEWS-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "四个已核对栏目及其fixture",
+      "steps": [
+        "分别真实冒烟和离线回归列表/正文"
+      ],
+      "expected": [
+        "标题URL日期状态可核对",
+        "不是仅首页可打开"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-083",
+      "title": "访问阻断有边界",
+      "task_id": "W09-1",
+      "cycle": "C09",
+      "requirement_ids": [
+        "NEWS-01",
+        "WEB-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "403/429/登录验证码来源mock",
+      "steps": [
+        "执行采集并观察重试和状态"
+      ],
+      "expected": [
+        "遵守退避",
+        "不绕过登录",
+        "来源异常清楚"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-084",
+      "title": "来源变结构不空成功",
+      "task_id": "W09-1",
+      "cycle": "C09",
+      "requirement_ids": [
+        "NEWS-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "fixture删除必需selector或日期异常",
+      "steps": [
+        "运行adapter并查看覆盖状态"
+      ],
+      "expected": [
+        "报结构变化/partial",
+        "不以0条正常成功前移游标"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-085",
+      "title": "URL重复与修订",
+      "task_id": "W09-2",
+      "cycle": "C09",
+      "requirement_ids": [
+        "NEWS-02"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "同URL重复、跟踪参数、正文改动样本",
+      "steps": [
+        "连续扫描三次",
+        "检查文章和revision"
+      ],
+      "expected": [
+        "重复幂等",
+        "实质正文变新revision",
+        "有效query不误删"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-086",
+      "title": "跨源同文与不同法规",
+      "task_id": "W09-2",
+      "cycle": "C09",
+      "requirement_ids": [
+        "NEWS-02"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "转载同正文及相似标题不同文件",
+      "steps": [
+        "采集并分组",
+        "检查展示和保留记录"
+      ],
+      "expected": [
+        "同文关联官方主源",
+        "不同法规不会误删"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-087",
+      "title": "失败游标和未知日期",
+      "task_id": "W09-2",
+      "cycle": "C09",
+      "requirement_ids": [
+        "NEWS-02"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "一个来源失败、一个无发布时间",
+      "steps": [
+        "采集",
+        "重启回看",
+        "核对游标和时间标签"
+      ],
+      "expected": [
+        "失败源水位不前移",
+        "未知发布日期不伪造",
+        "回看无重复文章"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-088",
+      "title": "摘要来源及推断正确",
+      "task_id": "W09-3",
+      "cycle": "C09",
+      "requirement_ids": [
+        "NEWS-03"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "相关/无关混合条目和标准要点",
+      "steps": [
+        "筛选并摘要",
+        "核对链接与影响判断"
+      ],
+      "expected": [
+        "不相关条目被过滤",
+        "推断不冒充强制要求",
+        "引用可打开"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-089",
+      "title": "额度不足保留资讯",
+      "task_id": "W09-3",
+      "cycle": "C09",
+      "requirement_ids": [
+        "NEWS-03",
+        "ACC-05"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "可用额不足或会员过期",
+      "steps": [
+        "触发每日采集摘要"
+      ],
+      "expected": [
+        "采集可记录",
+        "AI摘要跳过并说明",
+        "历史不丢失"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-090",
+      "title": "自动摘要预算有限",
+      "task_id": "W09-3",
+      "cycle": "C09",
+      "requirement_ids": [
+        "NEWS-03"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "高候选量、双设备及重启重复运行",
+      "steps": [
+        "执行今日自动摘要",
+        "模拟重试和时区修改"
+      ],
+      "expected": [
+        "服务器同账户业务日最多2次模型请求且受首次余额5%/绝对上限",
+        "重启时区不重置预算"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-091",
+      "title": "运行托盘与完全退出",
+      "task_id": "W10-1",
+      "cycle": "C10",
+      "requirement_ids": [
+        "NEWS-04"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "默认09:00日程，测试时钟",
+      "steps": [
+        "前台/托盘跨过时间",
+        "完全退出后跨日再启动"
+      ],
+      "expected": [
+        "运行时执行",
+        "退出不执行",
+        "启动合并补一次并标覆盖窗"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-092",
+      "title": "跨多天与时钟回拨",
+      "task_id": "W10-1",
+      "cycle": "C10",
+      "requirement_ids": [
+        "NEWS-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "已有成功日程和错过三天",
+      "steps": [
+        "启动补执行",
+        "回拨时间",
+        "再次重启"
+      ],
+      "expected": [
+        "只一次catchup",
+        "已成功逻辑日不重复"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-093",
+      "title": "时区修改和DST",
+      "task_id": "W10-1",
+      "cycle": "C10",
+      "requirement_ids": [
+        "NEWS-04"
+      ],
+      "level": "unit",
+      "priority": "P0",
+      "preconditions": "支持DST的时区及不合法/重复时刻",
+      "steps": [
+        "切换revision",
+        "推进时钟"
+      ],
+      "expected": [
+        "顺延不存在时刻",
+        "重复时刻仅一次",
+        "修改不重发当天内容"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-094",
+      "title": "崩溃回收不重复文章",
+      "task_id": "W10-2",
+      "cycle": "C10",
+      "requirement_ids": [
+        "NEWS-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "采集一半后应用被强杀",
+      "steps": [
+        "等待lease到期",
+        "启动恢复",
+        "检查记录"
+      ],
+      "expected": [
+        "同业务run可继续",
+        "无重复文章/通知",
+        "成功游标正确"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-095",
+      "title": "partial与摘要重试",
+      "task_id": "W10-2",
+      "cycle": "C10",
+      "requirement_ids": [
+        "NEWS-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "一来源失败，摘要服务临时失败",
+      "steps": [
+        "执行",
+        "按退避重试",
+        "查看记录"
+      ],
+      "expected": [
+        "成功源保留",
+        "只重试必要阶段",
+        "最多两次且覆盖缺失明确"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-096",
+      "title": "14天观察与漏执行",
+      "task_id": "W10-2",
+      "cycle": "C10",
+      "requirement_ids": [
+        "NEWS-06"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "至少四来源和真实日程环境",
+      "steps": [
+        "收集14自然日运行",
+        "核对预期日与故障"
+      ],
+      "expected": [
+        "有可复核观察表",
+        "漏执行/失败均解释和修复"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-097",
+      "title": "自动通知一次且可追溯",
+      "task_id": "W10-3",
+      "cycle": "C10",
+      "requirement_ids": [
+        "NEWS-05"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "同逻辑日多次重试/重启",
+      "steps": [
+        "生成摘要并通知",
+        "点击通知"
+      ],
+      "expected": [
+        "同日最多一条自动通知",
+        "打开正确摘要/覆盖范围"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-098",
+      "title": "系统禁用通知与协议安全",
+      "task_id": "W10-3",
+      "cycle": "C10",
+      "requirement_ids": [
+        "NEWS-05"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "Windows通知关闭，构造恶意launch URI",
+      "steps": [
+        "生成资讯",
+        "调用有效及恶意URI"
+      ],
+      "expected": [
+        "收件箱可见",
+        "仅允许摘要ID路由",
+        "不执行路径/命令"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-099",
+      "title": "V0.3完整回归发布",
+      "task_id": "W10-3",
+      "cycle": "C10",
+      "requirement_ids": [
+        "REL-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "最终候选包和过去版本数据",
+      "steps": [
+        "升级",
+        "采集摘要通知补执行",
+        "回归旧功能"
+      ],
+      "expected": [
+        "G06全部有证据",
+        "无P0失败",
+        "最终包可追溯"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-100",
+      "title": "计划拒绝代码和越权范围",
+      "task_id": "W11-1",
+      "cycle": "C11",
+      "requirement_ids": [
+        "OFF-02"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "任意脚本/路径/未知operation计划",
+      "steps": [
+        "验证计划",
+        "尝试执行"
+      ],
+      "expected": [
+        "拒绝且无副作用",
+        "只有白名单操作可运行"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-101",
+      "title": "模板版本及占位符缺失",
+      "task_id": "W11-1",
+      "cycle": "C11",
+      "requirement_ids": [
+        "OFF-02"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "正常及缺占位符模板",
+      "steps": [
+        "导入模板",
+        "填充",
+        "切换版本"
+      ],
+      "expected": [
+        "缺项清楚提示",
+        "版本可追踪",
+        "不生成假审批数据"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-102",
+      "title": "来源与缺失信息展示",
+      "task_id": "W11-1",
+      "cycle": "C11",
+      "requirement_ids": [
+        "OFF-02"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "资料少于模板必填字段",
+      "steps": [
+        "生成操作计划",
+        "查看待补充项"
+      ],
+      "expected": [
+        "关键数字有来源",
+        "无来源信息保持待补充"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-103",
+      "title": "Word结构和模板输出",
+      "task_id": "W11-2",
+      "cycle": "C11",
+      "requirement_ids": [
+        "OFF-03",
+        "OFF-07"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "含段落表格列表图片页眉模板",
+      "steps": [
+        "生成报告",
+        "重新读取",
+        "实际渲染"
+      ],
+      "expected": [
+        "必填结构存在",
+        "无假字段",
+        "分页缺字溢出检查完成"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-104",
+      "title": "指定范围修改原件保护",
+      "task_id": "W11-2",
+      "cycle": "C11",
+      "requirement_ids": [
+        "OFF-03"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "有明确段落/表格及不支持对象DOCX",
+      "steps": [
+        "选范围修改",
+        "比较源hash与未选内容"
+      ],
+      "expected": [
+        "源不变",
+        "允许范围修改",
+        "范围外差异报告"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-105",
+      "title": "复杂对象与预览失败",
+      "task_id": "W11-2",
+      "cycle": "C11",
+      "requirement_ids": [
+        "OFF-07"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "复杂浮动对象/字段与渲染故障",
+      "steps": [
+        "请求保真修改",
+        "查看失败或限制"
+      ],
+      "expected": [
+        "不支持路径拒绝或明确转新稿",
+        "预览失败独立标注"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-106",
+      "title": "确定性计算与重算",
+      "task_id": "W11-3",
+      "cycle": "C11",
+      "requirement_ids": [
+        "OFF-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "固定数据/公式真值及无缓存公式表",
+      "steps": [
+        "清理汇总",
+        "重算",
+        "独立核对每个结果"
+      ],
+      "expected": [
+        "SUM等支持集数字正确",
+        "公式/缓存/未验证区分"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-107",
+      "title": "空值异常和外链",
+      "task_id": "W11-3",
+      "cycle": "C11",
+      "requirement_ids": [
+        "OFF-04",
+        "OFF-07"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "日期百分比空值除零外链样本",
+      "steps": [
+        "生成清理计划和图表",
+        "检查规则"
+      ],
+      "expected": [
+        "数据策略/单位清楚",
+        "外链不自动执行",
+        "图表范围正确"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-108",
+      "title": "CSV公式注入与正常负值",
+      "task_id": "W11-3",
+      "cycle": "C11",
+      "requirement_ids": [
+        "OFF-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "公式样式文本和实际负数字段",
+      "steps": [
+        "按文本/数值类型导出并打开"
+      ],
+      "expected": [
+        "文本不执行公式",
+        "正常负值不被损坏"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-109",
+      "title": "按资料生成合理提纲",
+      "task_id": "W12-1",
+      "cycle": "C12",
+      "requirement_ids": [
+        "OFF-05"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "足量和不足量资料",
+      "steps": [
+        "生成页数要求的提纲",
+        "核对内容来源"
+      ],
+      "expected": [
+        "结构合理",
+        "不足不虚构事实凑页数",
+        "数字有来源"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.2"
+    },
+    {
+      "id": "TC-110",
+      "title": "页数和模型循环限制",
+      "task_id": "W12-1",
+      "cycle": "C12",
+      "requirement_ids": [
+        "OFF-05"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "超页数要求与重复规划",
+      "steps": [
+        "提交并查看范围调整"
+      ],
+      "expected": [
+        "限制5-30页或要求拆分",
+        "不无限调用"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.2"
+    },
+    {
+      "id": "TC-111",
+      "title": "提纲修改后来源不串页",
+      "task_id": "W12-1",
+      "cycle": "C12",
+      "requirement_ids": [
+        "OFF-05"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "用户调整页序/删除页",
+      "steps": [
+        "编辑提纲再生成来源映射"
+      ],
+      "expected": [
+        "稳定slide_id与内容来源对应",
+        "删除页不遗留错误引用"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.2"
+    },
+    {
+      "id": "TC-112",
+      "title": "多版式中文PPT可编辑",
+      "task_id": "W12-2",
+      "cycle": "C12",
+      "requirement_ids": [
+        "OFF-05"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "封面双栏表格图表中文模板",
+      "steps": [
+        "生成PPTX",
+        "重新读取",
+        "逐页渲染"
+      ],
+      "expected": [
+        "对象可编辑",
+        "数字一致",
+        "预览页齐全"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.2"
+    },
+    {
+      "id": "TC-113",
+      "title": "溢出和字号限制",
+      "task_id": "W12-2",
+      "cycle": "C12",
+      "requirement_ids": [
+        "OFF-07"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "长文本/大表/窄版式fixture",
+      "steps": [
+        "生成并执行检查修复"
+      ],
+      "expected": [
+        "无越框遮挡",
+        "字号满足默认",
+        "修复不损害来源"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.2"
+    },
+    {
+      "id": "TC-114",
+      "title": "渲染局部失败不伪报",
+      "task_id": "W12-2",
+      "cycle": "C12",
+      "requirement_ids": [
+        "OFF-07"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "指定某页渲染失败",
+      "steps": [
+        "生成并查看检查结论"
+      ],
+      "expected": [
+        "标明未检查页",
+        "可编辑产物保留",
+        "不标全通过"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.2"
+    },
+    {
+      "id": "TC-115",
+      "title": "整套PPT逐页验收",
+      "task_id": "W12-3",
+      "cycle": "C12",
+      "requirement_ids": [
+        "OFF-05",
+        "OFF-07"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "至少3套不同资料与模板的生成稿",
+      "steps": [
+        "逐页核对文字数字图表布局引用"
+      ],
+      "expected": [
+        "无关键事实错误",
+        "无溢出缺字",
+        "每页检查有记录"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.2"
+    },
+    {
+      "id": "TC-116",
+      "title": "模板字体缺失处理",
+      "task_id": "W12-3",
+      "cycle": "C12",
+      "requirement_ids": [
+        "OFF-07"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "未安装商业字体的干净系统",
+      "steps": [
+        "生成并预览",
+        "核对字体替换"
+      ],
+      "expected": [
+        "使用许可明确的随包字体或提示替换",
+        "无隐藏依赖"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.2"
+    },
+    {
+      "id": "TC-117",
+      "title": "V0.4.2安装包回归",
+      "task_id": "W12-3",
+      "cycle": "C12",
+      "requirement_ids": [
+        "REL-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "最终包与旧数据",
+      "steps": [
+        "升级",
+        "Word/Excel/PPT生成及核心回归"
+      ],
+      "expected": [
+        "P0通过",
+        "预览和可编辑文件均可追溯"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.2"
+    },
+    {
+      "id": "TC-118",
+      "title": "页和对象范围准确",
+      "task_id": "W13-1",
+      "cycle": "C13",
+      "requirement_ids": [
+        "OFF-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "含隐藏页组合图表动画的PPT",
+      "steps": [
+        "选择普通文本/表格/图片对象"
+      ],
+      "expected": [
+        "映射实际slide_id/shape_id",
+        "不误改隐藏页或共享对象"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.3"
+    },
+    {
+      "id": "TC-119",
+      "title": "不支持对象拒绝策略",
+      "task_id": "W13-1",
+      "cycle": "C13",
+      "requirement_ids": [
+        "OFF-06"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "SmartArt/OLE/共享主题变更请求",
+      "steps": [
+        "请求保真修改",
+        "查看方案"
+      ],
+      "expected": [
+        "拒绝未证明保留路径",
+        "可明确选择生成新稿"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.3"
+    },
+    {
+      "id": "TC-120",
+      "title": "修改前基线完整",
+      "task_id": "W13-1",
+      "cycle": "C13",
+      "requirement_ids": [
+        "OFF-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "含共享母版及媒体PPT",
+      "steps": [
+        "提取解包part关系与全部页预览"
+      ],
+      "expected": [
+        "有可核对hash/关系/渲染基线",
+        "不只存ZIP总hash"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.3"
+    },
+    {
+      "id": "TC-121",
+      "title": "指定页文本表格图片修改",
+      "task_id": "W13-2",
+      "cycle": "C13",
+      "requirement_ids": [
+        "OFF-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "有三类支持对象及未选页PPT",
+      "steps": [
+        "只改指定对象",
+        "重新打开和渲染"
+      ],
+      "expected": [
+        "改动符合计划",
+        "原件hash不变",
+        "其他页part/媒体不变"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.3"
+    },
+    {
+      "id": "TC-122",
+      "title": "共享part影响被拦截",
+      "task_id": "W13-2",
+      "cycle": "C13",
+      "requirement_ids": [
+        "OFF-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "替换会影响多个页的共享图片/主题",
+      "steps": [
+        "执行局部修改计划"
+      ],
+      "expected": [
+        "建立新局部关系或拒绝",
+        "不会静默影响其他页"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.3"
+    },
+    {
+      "id": "TC-123",
+      "title": "输出失败和布局检查",
+      "task_id": "W13-2",
+      "cycle": "C13",
+      "requirement_ids": [
+        "OFF-07"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "长文本导致溢出或损坏关系",
+      "steps": [
+        "执行并检查预览/结构"
+      ],
+      "expected": [
+        "问题阻断成功提交",
+        "保留差异与原件",
+        "不冒充保真"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.3"
+    },
+    {
+      "id": "TC-124",
+      "title": "未选复杂对象保持证明",
+      "task_id": "W13-3",
+      "cycle": "C13",
+      "requirement_ids": [
+        "OFF-06"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "动画媒体SmartArt等未选页及支持修改页",
+      "steps": [
+        "局部修改",
+        "对比part关系与可视页"
+      ],
+      "expected": [
+        "未经触达对象保持",
+        "不能证明则该样本拒绝进入支持集"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.3"
+    },
+    {
+      "id": "TC-125",
+      "title": "ZIP差异不替代内容差异",
+      "task_id": "W13-3",
+      "cycle": "C13",
+      "requirement_ids": [
+        "OFF-06"
+      ],
+      "level": "unit",
+      "priority": "P0",
+      "preconditions": "仅打包时间戳变化与真实XML变化两组",
+      "steps": [
+        "运行规范化比较",
+        "查看差异报告"
+      ],
+      "expected": [
+        "时间戳噪声不误判",
+        "真实变化均定位"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.3"
+    },
+    {
+      "id": "TC-126",
+      "title": "最终编辑安装包验收",
+      "task_id": "W13-3",
+      "cycle": "C13",
+      "requirement_ids": [
+        "REL-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "候选包和已冻结支持白名单",
+      "steps": [
+        "干净机局部编辑/预览/导出",
+        "回归前版本"
+      ],
+      "expected": [
+        "全部P0通过",
+        "限制与真实支持一致"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.3"
+    },
+    {
+      "id": "TC-127",
+      "title": "领域案例完整且有权使用",
+      "task_id": "W14-1",
+      "cycle": "C14",
+      "requirement_ids": [
+        "EVAL-01"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "代表场景资料及专业评审人",
+      "steps": [
+        "核对30案例来源脱敏/真值/禁错项"
+      ],
+      "expected": [
+        "案例覆盖指定场景",
+        "无未授权材料",
+        "非只有展示题"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.5"
+    },
+    {
+      "id": "TC-128",
+      "title": "模板专业性与草稿标记",
+      "task_id": "W14-1",
+      "cycle": "C14",
+      "requirement_ids": [
+        "EVAL-01"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "术语/法规依据尚未审核的模板",
+      "steps": [
+        "完成专业评审并核对发布状态"
+      ],
+      "expected": [
+        "未审模板为草稿",
+        "审批与生效信息不伪造"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.5"
+    },
+    {
+      "id": "TC-129",
+      "title": "评测集分离防调参泄漏",
+      "task_id": "W14-1",
+      "cycle": "C14",
+      "requirement_ids": [
+        "KB-08"
+      ],
+      "level": "evaluation",
+      "priority": "P0",
+      "preconditions": "开发集和保留集已冻结",
+      "steps": [
+        "记录访问与版本",
+        "执行旧基线"
+      ],
+      "expected": [
+        "保留集不作为日常提示词示例",
+        "成绩可复现"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.5"
+    },
+    {
+      "id": "TC-130",
+      "title": "优化不能牺牲关键正确性",
+      "task_id": "W14-2",
+      "cycle": "C14",
+      "requirement_ids": [
+        "EVAL-01"
+      ],
+      "level": "evaluation",
+      "priority": "P0",
+      "preconditions": "旧版与候选版同保留集",
+      "steps": [
+        "分别运行",
+        "比较原件/数字/引用/范围/账本"
+      ],
+      "expected": [
+        "所有硬不变量不退步",
+        "有关键回退则不合并"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.5"
+    },
+    {
+      "id": "TC-131",
+      "title": "性能与成本真实可比",
+      "task_id": "W14-2",
+      "cycle": "C14",
+      "requirement_ids": [
+        "NFR-01",
+        "BIZ-01"
+      ],
+      "level": "evaluation",
+      "priority": "P0",
+      "preconditions": "同机器同输入同计费快照",
+      "steps": [
+        "记录P50/P95/成功率/每成功任务成本"
+      ],
+      "expected": [
+        "口径一致且含失败消耗",
+        "无只比最好样例"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.5"
+    },
+    {
+      "id": "TC-132",
+      "title": "路由或嵌入变化可回退",
+      "task_id": "W14-2",
+      "cycle": "C14",
+      "requirement_ids": [
+        "EVAL-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "候选新模型/索引参数",
+      "steps": [
+        "新代或新路由上线测试",
+        "执行回退"
+      ],
+      "expected": [
+        "旧数据可恢复",
+        "无向量混用或历史费率改写"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.5"
+    },
+    {
+      "id": "TC-133",
+      "title": "总验收与最终包一致",
+      "task_id": "W14-3",
+      "cycle": "C14",
+      "requirement_ids": [
+        "REL-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "全部阶段报告及最终候选包",
+      "steps": [
+        "执行关键全链路回归",
+        "核对包hash与测试版本"
+      ],
+      "expected": [
+        "无未运行P0",
+        "结果和最终包一致",
+        "缺陷均有结论"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.5"
+    },
+    {
+      "id": "TC-134",
+      "title": "第三人按文档恢复运维",
+      "task_id": "W14-3",
+      "cycle": "C14",
+      "requirement_ids": [
+        "OPS-02",
+        "NFR-03"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "独立测试人和备份，不提供临时口头步骤",
+      "steps": [
+        "按手册恢复本地/服务端",
+        "检查诊断定位"
+      ],
+      "expected": [
+        "可恢复可定位",
+        "不依赖开发者个人环境或密钥文件"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.5"
+    },
+    {
+      "id": "TC-135",
+      "title": "源码和材料移交完整",
+      "task_id": "W14-3",
+      "cycle": "C14",
+      "requirement_ids": [
+        "REL-01"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "最终仓库发行清单和资产",
+      "steps": [
+        "逐项核对第19节材料及许可"
+      ],
+      "expected": [
+        "源码/契约/fixture/评测/部署/恢复/政策齐全",
+        "无真实密钥"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.5"
+    },
+    {
+      "id": "TC-136",
+      "title": "V0.4.1 Word/Excel发布回归",
+      "task_id": "W11-3",
+      "cycle": "C11",
+      "requirement_ids": [
+        "OFF-03",
+        "OFF-04",
+        "OFF-07",
+        "REL-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "最终候选包与V0.3旧数据",
+      "steps": [
+        "升级",
+        "运行Word生成/范围修改和Excel清理/重算/图表",
+        "运行前版核心回归"
+      ],
+      "expected": [
+        "全部P0通过",
+        "G07 Word/Excel边界有证据",
+        "报告对应最终包hash"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-137",
+      "title": "一次性激活码重放与密码恢复",
+      "task_id": "W04-2",
+      "cycle": "C04",
+      "requirement_ids": [
+        "ACC-01",
+        "ADM-02",
+        "NFR-02"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "管理员可创建/轮换激活码，用户已激活并有旧会话",
+      "steps": [
+        "同幂等键重复创建邀请",
+        "轮换为密码重置码",
+        "用旧码和新码分别恢复",
+        "用旧会话请求付费接口"
+      ],
+      "expected": [
+        "重放不重复创建用户且不返回原秘密",
+        "新码使旧码失效",
+        "恢复后旧会话撤销",
+        "hash存储和审计无激活码正文"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-138",
+      "title": "通用身份与渐进导航",
+      "task_id": "W01-1",
+      "cycle": "C01",
+      "requirement_ids": [
+        "PRODUCT-01",
+        "UI-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "用户release包，首次启动，无领域预设",
+      "steps": [
+        "使用非医药问题启动任务",
+        "查看导航与默认助手",
+        "逐版本启用模块"
+      ],
+      "expected": [
+        "账号无需行业/岗位",
+        "不强制QA角色",
+        "工作台到模块≤1次点击、核心操作区≤2次",
+        "未上线入口隐藏"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-139",
+      "title": "视觉缩放与中文键盘",
+      "task_id": "W01-1",
+      "cycle": "C01",
+      "requirement_ids": [
+        "UI-02"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "1024×768参考物理窗口及100/125/150/200%缩放，支持中文输入法",
+      "steps": [
+        "检查主页面和按钮",
+        "测文字尺寸/对比度",
+        "Tab遍历",
+        "中文选词回车与停止重试"
+      ],
+      "expected": [
+        "正文≥14px辅助≥12px",
+        "对比度达标",
+        "无核心裁切/非必要横滚",
+        "焦点可见",
+        "选词Enter不发送"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-140",
+      "title": "首版新手入口验证",
+      "task_id": "W01-2",
+      "cycle": "C01",
+      "requirement_ids": [
+        "UI-01",
+        "UI-03"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "5名首次使用者，至少2名非医药；无口头指路",
+      "steps": [
+        "分别要求分析本地文件、联网找依据、找到输出副本",
+        "记录点击/入口耗时/障碍"
+      ],
+      "expected": [
+        "至少4人独立找到三项入口",
+        "每项目标≤30s",
+        "失败问题整改复测",
+        "报告含匿名逐人记录"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.1"
+    },
+    {
+      "id": "TC-141",
+      "title": "非医药资料直接建库",
+      "task_id": "W06-1",
+      "cycle": "C06",
+      "requirement_ids": [
+        "PRODUCT-01",
+        "KB-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "通用项目说明/规章制度与医药资料，各有版本",
+      "steps": [
+        "不选行业建库",
+        "导入资料",
+        "只填名称",
+        "检查可选字段"
+      ],
+      "expected": [
+        "库与文件就绪",
+        "不要求法规编号、机构、岗位或医药日期",
+        "可选领域字段不改变通用资料语义"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-142",
+      "title": "知识库直接问答与结果定位",
+      "task_id": "W07-3",
+      "cycle": "C07",
+      "requirement_ids": [
+        "UI-01",
+        "KB-04",
+        "KB-05"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "已建库和100k chunk标准基准集",
+      "steps": [
+        "从工作台进入知识库",
+        "选范围直接提问",
+        "追问",
+        "打开来源",
+        "统计50次热检索延迟"
+      ],
+      "expected": [
+        "≤1次进入模块、≤2次达操作区",
+        "范围始终可见",
+        "引用定位正确",
+        "本地检索P95目标≤2s，云生成另计"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-143",
+      "title": "知识库新手与通用子集验收",
+      "task_id": "W08-3",
+      "cycle": "C08",
+      "requirement_ids": [
+        "UI-03",
+        "PRODUCT-01",
+        "KB-08"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "至少5名首次使用该流程者含2名非医药；120题中至少30通用题",
+      "steps": [
+        "独立建库/提问/找引用",
+        "记录入口和阻碍",
+        "按领域与通用子集分别评测"
+      ],
+      "expected": [
+        "至少4人独立定位三流程",
+        "通用与领域子集均符合知识库指标",
+        "不因总体平均掩盖通用失败"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.2"
+    },
+    {
+      "id": "TC-144",
+      "title": "领域目录与真实覆盖",
+      "task_id": "W09-1",
+      "cycle": "C09",
+      "requirement_ids": [
+        "FEED-01",
+        "PRODUCT-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "一个真实医药候选包、一个合成第二领域fixture和未发布包",
+      "steps": [
+        "验证source/topic/type映射",
+        "发布目录",
+        "切换两个fixture",
+        "尝试选择未发布项"
+      ],
+      "expected": [
+        "至少医药包G06实测后才可发布",
+        "无覆盖项不可订阅",
+        "通用层无硬编码医药",
+        "第二fixture不冒充已上线内容"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-145",
+      "title": "领域包完整性与执行约束",
+      "task_id": "W09-1",
+      "cycle": "C09",
+      "requirement_ids": [
+        "FEED-01",
+        "NFR-02"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "合法包、损坏hash、任意脚本字段和未知adapter版本样本",
+      "steps": [
+        "导入各包",
+        "核对版本不可覆盖",
+        "尝试运行未知adapter"
+      ],
+      "expected": [
+        "仅完整性合格且schema/允许列表合法的包进入目录",
+        "代码字段/未知adapter拒绝",
+        "包不扩大工具权限"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-146",
+      "title": "只选内容的订阅配置",
+      "task_id": "W09-3",
+      "cycle": "C09",
+      "requirement_ids": [
+        "FEED-02",
+        "UI-01"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "已发布目录与可生成样例的来源fixture",
+      "steps": [
+        "使用默认建议",
+        "选领域/主题/类型/时间",
+        "预览后保存",
+        "选超10唯一来源",
+        "检查界面"
+      ],
+      "expected": [
+        "不需URL/RSS/Key/cron/正则",
+        "预览与保存覆盖一致",
+        "超限明确阻止而非丢源",
+        "可暂停恢复并显示下次执行"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-147",
+      "title": "计划包版本与预算一致",
+      "task_id": "W10-1",
+      "cycle": "C10",
+      "requirement_ids": [
+        "FEED-03",
+        "NEWS-03",
+        "NEWS-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "运行中计划、旧/新领域包、已用当日资讯预算",
+      "steps": [
+        "采集中更新领域包",
+        "编辑主题与时间",
+        "重启",
+        "撤回来源",
+        "尝试多领域/多设备重置预算"
+      ],
+      "expected": [
+        "当前run保持旧快照",
+        "新修订下一合法点生效",
+        "撤回源partial并提示",
+        "当日不重复自动通知",
+        "预算跨设备不重置"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-148",
+      "title": "资讯新手与覆盖解释",
+      "task_id": "W10-3",
+      "cycle": "C10",
+      "requirement_ids": [
+        "UI-03",
+        "FEED-02",
+        "NEWS-05"
+      ],
+      "level": "manual",
+      "priority": "P0",
+      "preconditions": "5名首次使用者含2名非医药；正常/partial日报",
+      "steps": [
+        "独立设置关注内容和时间、找今日摘要、打开原文",
+        "检查禁用Windows通知后的站内结果"
+      ],
+      "expected": [
+        "至少4人无指路找到三个入口",
+        "来源和覆盖失败清楚",
+        "系统通知关闭不影响站内日报",
+        "运行记录真实"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.3"
+    },
+    {
+      "id": "TC-149",
+      "title": "常用要求CRUD与历史版本",
+      "task_id": "W11-1",
+      "cycle": "C11",
+      "requirement_ids": [
+        "PREF-01"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "本地常用要求空库、历史attempt",
+      "steps": [
+        "创建/复制/改名/设默认",
+        "修改为新revision",
+        "删除后打开历史",
+        "重启",
+        "超过50条上限"
+      ],
+      "expected": [
+        "无需常用要求也能开始",
+        "变更显式保存",
+        "默认本地持久化",
+        "历史快照不变",
+        "超限阻止且可解释"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-150",
+      "title": "优先级冲突和不可执行要求",
+      "task_id": "W11-1",
+      "cycle": "C11",
+      "requirement_ids": [
+        "PREF-02",
+        "FILE-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "模板锁定字体；profile、领域和软件默认有冲突",
+      "steps": [
+        "本次覆盖语言/长度",
+        "要求覆盖原件、虚构引用、用未知脚本",
+        "对锁定字体提出冲突",
+        "提交不支持格式字段"
+      ],
+      "expected": [
+        "按规范优先级合并并列采用值",
+        "危险要求拒绝",
+        "关键未决冲突needs_input",
+        "不支持字段说明",
+        "不静默忽略"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-151",
+      "title": "模板知识范围和重试快照",
+      "task_id": "W11-1",
+      "cycle": "C11",
+      "requirement_ids": [
+        "PREF-01",
+        "PREF-03",
+        "KB-04"
+      ],
+      "level": "integration",
+      "priority": "P0",
+      "preconditions": "profile关联模板及库A；另有库B；历史generation与删除文档",
+      "steps": [
+        "创建任务后修改profile/模板/库",
+        "查询来源",
+        "重试旧attempt",
+        "删除关联资料后重跑"
+      ],
+      "expected": [
+        "每attempt锁定版本/有效字段/provenance和选中知识范围",
+        "不自动扩到库B",
+        "删除权限再次校验",
+        "变更要求新attempt"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-152",
+      "title": "个性化WordExcel与新手办公",
+      "task_id": "W11-3",
+      "cycle": "C11",
+      "requirement_ids": [
+        "UI-03",
+        "PREF-02",
+        "PREF-03",
+        "OFF-03",
+        "OFF-04"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "5名首次使用者含2名非医药；受支持模板和独立计算oracle",
+      "steps": [
+        "选常用要求制作Word",
+        "Excel按单位/精度/日期出表",
+        "本次调整受众",
+        "找输出与历史要求"
+      ],
+      "expected": [
+        "至少4人独立找到生成/调整要求/输出入口",
+        "确定性字段与oracle相符",
+        "未支持项明示",
+        "原件不变"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.1"
+    },
+    {
+      "id": "TC-153",
+      "title": "PPT复用个人风格与篇幅",
+      "task_id": "W12-2",
+      "cycle": "C12",
+      "requirement_ids": [
+        "PREF-02",
+        "PREF-03",
+        "OFF-05",
+        "OFF-07"
+      ],
+      "level": "windows_e2e",
+      "priority": "P0",
+      "preconditions": "相同资料，两种常用要求和模板锁定约束",
+      "steps": [
+        "分别生成指定页数/色彩/字体的PPT",
+        "单次覆盖页数",
+        "实际逐页渲染并核对",
+        "用不足资料要求凑页"
+      ],
+      "expected": [
+        "保存有效要求快照",
+        "可验证规则达标或明确未满足",
+        "锁定模板不破坏",
+        "内容不足提示减页/待补充",
+        "无假数据"
+      ],
+      "evidence_required": [
+        "版本/包hash和环境",
+        "实际结果及日志或检查表"
+      ],
+      "status": "not_run",
+      "target_version": "V0.4.2"
+    }
+  ]
+}

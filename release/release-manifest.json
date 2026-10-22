@@ -1,0 +1,292 @@
+{
+  "template_only": false,
+  "status": "draft_unfrozen",
+  "freeze_blockers": [
+    "G00 open: clean Windows 10/11 x64 build and runtime verification (W00-2 / TC-004..TC-006) not yet executed",
+    "G00/TC-003: local OCR engine/model/language data assets and bundled CJK font notices not yet finalized",
+    "G03 open: formal app_id, protocol, service_origin, and code-signing certificate not yet frozen",
+    "Upstream optional proprietary payloads (@anthropic-ai/claude-agent-sdk*, @openai/codex*) must be excluded from QualityOffice AI user distribution"
+  ],
+  "product_version": "0.1.0-alpha.1",
+  "build_id": null,
+  "upstream_url": "https://github.com/deepseek-ai/deepseek-harness.git",
+  "upstream_tag": "dsh-v0.2.1-rc.2",
+  "upstream_commit": "687f282e8625c6b8d11ff58211a90524be2e4317",
+  "app_id": null,
+  "protocol": null,
+  "service_origin": null,
+  "build_environment": {
+    "os": "Microsoft Windows 11 Pro x64 (10.0.26200 Build 26200)",
+    "node": "v24.4.0",
+    "pnpm": "11.28.5",
+    "git": "2.54.0.windows.1",
+    "python_host": "3.13.12 / 3.12.13",
+    "vs_build_tools": "Visual Studio Build Tools 2026 18.6.2 (18.6.11822.322, VC.Tools.x86.x64 installed)"
+  },
+  "installer_mode": "per_user",
+  "signing_state": "unsigned",
+  "lockfiles": [
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 1090222,
+      "sha256": "4637cca3b89c4c8d5a147321710e597aa62ec2444a3772ab542be5690893dfe4"
+    },
+    {
+      "path": "scripts/primary-runtime/lock.json",
+      "bytes": 10216,
+      "sha256": "733c3c53d95ae524bddb123e1319c48ecacb0dc729be956c25188f930c095bd5"
+    },
+    {
+      "path": "package.json",
+      "bytes": 18994,
+      "sha256": "12bb41cd8212021a784b33a20c2b84372189a9505b42081d5e3869e21ff5cffc"
+    },
+    {
+      "path": "apps/desktop/package.json",
+      "bytes": 3904,
+      "sha256": "913095d3048ad424335acccf8e3193bb9523961604709062a430f57c4ac22479"
+    }
+  ],
+  "plugins": [
+    {
+      "name": "@deepseek-ai/dsh-skill-office",
+      "source": "upstream-workspace (packages/skill/skill-office)",
+      "commit": "687f282e8625c6b8d11ff58211a90524be2e4317",
+      "version": "0.2.1-rc.2",
+      "engines_or_peers": {
+        "@deepseek-ai/dsh-skill": "workspace:*",
+        "@deepseek-ai/cordis": "workspace:~"
+      },
+      "license": "MIT",
+      "status": "retained_for_controlled_adaptation",
+      "notes": "Bundled Word/Excel/PPT skills; must be invoked via controlled local-worker plan in user builds (ARCH-02)"
+    },
+    {
+      "name": "@deepseek-ai/dsh-office-to-pdf",
+      "source": "upstream-workspace (packages/document/office-to-pdf)",
+      "commit": "687f282e8625c6b8d11ff58211a90524be2e4317",
+      "version": "0.2.1-rc.2",
+      "engines_or_peers": {
+        "@deepseek-ai/cordis": "workspace:~"
+      },
+      "license": "MIT",
+      "status": "retained",
+      "notes": "Uses @deepseek-ai/libreoffice-kit@^0.1.5 for local Office-to-PDF conversion and preview"
+    },
+    {
+      "name": "dsh-open-file",
+      "source": "https://github.com/hyper-dsh-plugins/dsh-open-file.git",
+      "commit": "39636d198993c5980da0091056d307bb5a8a48c5",
+      "version": "0.1.2-rc.1",
+      "engines_or_peers": {
+        "node": ">=22.13.0",
+        "@deepseek-ai/dsh-agent": "0.1.2-rc.1",
+        "@deepseek-ai/dsh-session": "0.1.2-rc.1",
+        "@deepseek-ai/dsh-skill": "0.1.2-rc.1",
+        "@deepseek-ai/dsh-tools": "0.1.2-rc.1"
+      },
+      "license": "MIT",
+      "status": "rejected_incompatible",
+      "notes": "Rejected by compatibility preflight (TC-002): exact peerDependencies pin 0.1.2-rc.1 against runtime 0.2.1-rc.2"
+    },
+    {
+      "name": "@dsh-cowork/plugin",
+      "source": "https://github.com/Jesse-njx/dsh-cowork.git#packages/dsh",
+      "commit": "2ae5cf755c4294a1e988eebf3b12dd062425d84c",
+      "version": "0.1.0",
+      "engines_or_peers": {
+        "node": ">=20",
+        "@deepseek-ai/dsh-fs": "^0.1.0-rc.6",
+        "@deepseek-ai/dsh-system-prompt": "^0.1.0-rc.6",
+        "@deepseek-ai/dsh-tools": "^0.1.0-rc.6"
+      },
+      "license": "MIT",
+      "status": "rejected_incompatible",
+      "notes": "Rejected by compatibility preflight (TC-002): 0.x peer range ^0.1.0-rc.6 (<0.2.0-0) does not satisfy runtime 0.2.1-rc.2"
+    },
+    {
+      "name": "dsh-quicksight",
+      "source": "https://github.com/Isanti2016/dsh-quicksight.git",
+      "commit": "648123d4a605e53bf74c0e6189462004ba4bc9b7",
+      "version": "0.1.1",
+      "engines_or_peers": {
+        "node": ">=22.13"
+      },
+      "license": "MIT",
+      "status": "rejected_architecture_violation",
+      "notes": "Rejected: requires manual user pip install rapidocr_onnxruntime in ~/.dsh/tools/ocr-venv and external modlens API keys, violating BASE-02 and ACC-02"
+    }
+  ],
+  "runtimes": [
+    {
+      "name": "electron",
+      "version": "44.7.0",
+      "target": "win-x64",
+      "license": "MIT",
+      "source": "pnpm-lock.yaml"
+    },
+    {
+      "name": "node-primary-runtime",
+      "version": "24.21.0",
+      "target": "win-x64",
+      "archive": "win-x64.zip",
+      "sha256": "158f7685b44de51f6c0df1d153526cbcd3e1bc739a8dfc607721cef75de9e541",
+      "license": "MIT",
+      "source": "scripts/primary-runtime/lock.json"
+    },
+    {
+      "name": "python-primary-runtime",
+      "version": "3.12.14 (release 20260901)",
+      "target": "x86_64-pc-windows-msvc",
+      "sha256": "7c45c9622400d578709a9b2cddbe8124cc21d382409d9f13406d706d28e31b14",
+      "license": "PSF-2.0",
+      "source": "scripts/primary-runtime/lock.json"
+    },
+    {
+      "name": "pnpm-bundled",
+      "version": "11.28.5",
+      "target": "universal",
+      "license": "MIT",
+      "source": "package.json#packageManager"
+    },
+    {
+      "name": "@deepseek-ai/libreoffice-kit-win32-x64",
+      "version": "0.1.5",
+      "target": "win-x64",
+      "license": "MPL-2.0",
+      "source": "pnpm-lock.yaml"
+    }
+  ],
+  "assets": [
+    {
+      "name": "numpy-2.3.5-cp312-cp312-win_amd64.whl",
+      "version": "2.3.5",
+      "sha256": "86945f2ee6d10cdfd67bcb4069c1662dd711f7e2a4343db5cecec06b87cf31aa",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "pandas-3.0.1-cp312-cp312-win_amd64.whl",
+      "version": "3.0.1",
+      "sha256": "536232a5fe26dd989bd633e7a0c450705fdc86a207fec7254a55e9a22950fe43",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "pillow-12.3.0-cp312-cp312-win_amd64.whl",
+      "version": "12.3.0",
+      "sha256": "a2b55dd6b2a4c4b7d87ffa56bdb33fdc5fdb9a462173861a7bc097f17d91cb09",
+      "license": "MIT-CMU"
+    },
+    {
+      "name": "lxml-6.1.3-cp312-cp312-win_amd64.whl",
+      "version": "6.1.3",
+      "sha256": "3e9a00d1c2c30936f7add097c41afc5da6556c580909104aafd382cac92a855c",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "python_docx-1.2.0-py3-none-any.whl",
+      "version": "1.2.0",
+      "sha256": "3fd478f3250fbbbfd3b94fe1e985955737c145627498896a8a6bf81f4baf66c7",
+      "license": "MIT"
+    },
+    {
+      "name": "python_pptx-1.0.2-py3-none-any.whl",
+      "version": "1.0.2",
+      "sha256": "160838e0b8565a8b1f679476795886e9fea18aa5e795db7ae531606d68e785cba",
+      "license": "MIT"
+    },
+    {
+      "name": "openpyxl-3.1.5-py3-none-any.whl",
+      "version": "3.1.5",
+      "sha256": "5282c12b107bffeef825f4617dc029afaf41d0ea60823bbb665ef3079dc79de2",
+      "license": "MIT"
+    },
+    {
+      "name": "xlsxwriter-3.2.9-py3-none-any.whl",
+      "version": "3.2.9",
+      "sha256": "9a5db42bc5dff014806c58a20b9eae7322a134abb6fce3c92c181bfb275ec5b3",
+      "license": "BSD-2-Clause"
+    },
+    {
+      "name": "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+      "version": "2.9.0.post0",
+      "sha256": "a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427",
+      "license": "Apache-2.0 OR BSD-3-Clause"
+    },
+    {
+      "name": "six-1.17.0-py2.py3-none-any.whl",
+      "version": "1.17.0",
+      "sha256": "4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274",
+      "license": "MIT"
+    },
+    {
+      "name": "tzdata-2025.2-py2.py3-none-any.whl",
+      "version": "2025.2",
+      "sha256": "1a403fada01ff9221ca8044d701868fa132215d84beb92242d9acd2147f667a8",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "typing_extensions-4.16.0-py3-none-any.whl",
+      "version": "4.16.0",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "license": "PSF-2.0"
+    },
+    {
+      "name": "et_xmlfile-2.0.0-py3-none-any.whl",
+      "version": "2.0.0",
+      "sha256": "7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa",
+      "license": "MIT"
+    },
+    {
+      "name": "local-ocr-engine-and-langdata",
+      "version": null,
+      "sha256": null,
+      "license": null,
+      "status": "pending_W00_2_freeze"
+    },
+    {
+      "name": "bundled-cjk-fonts",
+      "version": null,
+      "sha256": null,
+      "license": null,
+      "status": "pending_W00_2_freeze"
+    }
+  ],
+  "licenses": [
+    {
+      "component": "DeepSeek Harness upstream & vendored Cordis (@deepseek-ai/*)",
+      "spdx": "MIT",
+      "notice_path": "LICENSE, THIRD_PARTY_NOTICES.md, vendor/README.md",
+      "distribution_obligation": "Retain copyright and MIT license notices in distributed packages"
+    },
+    {
+      "component": "@deepseek-ai/libreoffice-kit & @deepseek-ai/libreoffice-kit-win32-x64",
+      "spdx": "MPL-2.0",
+      "notice_path": "THIRD_PARTY_NOTICES.md",
+      "distribution_obligation": "Retain MPL-2.0 license, NOTICE, and source pointer to https://github.com/deepseek-ai/dsh-libreoffice-kit"
+    },
+    {
+      "component": "Bundled Python 3.12.14 & 13 locked wheels",
+      "spdx": "PSF-2.0, MIT, MIT-CMU, BSD-2-Clause, BSD-3-Clause, Apache-2.0",
+      "notice_path": "THIRD_PARTY_NOTICES.md, scripts/primary-runtime/lock.json",
+      "distribution_obligation": "Preserve dist-info license files unpacked into site-packages"
+    },
+    {
+      "component": "@anthropic-ai/claude-agent-sdk* & @openai/codex*",
+      "spdx": "Proprietary / Apache-2.0 optional CLI payloads",
+      "notice_path": "THIRD_PARTY_NOTICES.md",
+      "distribution_obligation": "MUST NOT be distributed in QualityOffice AI user builds; strip in product packaging profile"
+    }
+  ],
+  "target_os_builds": [],
+  "installer_sha256": null,
+  "test_report_paths": [
+    "docs/reports/W00-1-20261022.md"
+  ],
+  "migration_version": 1,
+  "chinese_name": "质量AI助手",
+  "english_name": "QualityOffice AI",
+  "display_name": "质量AI助手 · QualityOffice AI",
+  "positioning": "面向专业工作的 AI 知识与办公助手",
+  "tagline": "专业知识，智能办公。",
+  "initial_domain_package": "pharma"
+}

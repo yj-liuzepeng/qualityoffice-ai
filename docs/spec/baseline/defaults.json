@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "classification": "D_specification_defaults_not_measured",
+  "platform": {
+    "architecture": "x64",
+    "test_candidates": [
+      "Windows 10 22H2",
+      "Windows 11 24H2"
+    ],
+    "cpu_cores": 4,
+    "ram_gib": 16,
+    "free_disk_gib": 8,
+    "gpu_required": false,
+    "workspace_fs": "NTFS"
+  },
+  "files": {
+    "max_file_bytes": 52428800,
+    "max_task_files": 10,
+    "max_task_bytes": 209715200,
+    "pdf_pages": 200,
+    "ppt_slides": 200,
+    "nonempty_cells": 100000,
+    "sheets": 10,
+    "csv_rows": 100000,
+    "image_megapixels": 20,
+    "archive_unpacked_bytes": 524288000,
+    "archive_entries": 10000,
+    "archive_depth": 16
+  },
+  "execution": {
+    "parallel_tasks": 2,
+    "heavy_worker_slots": 1,
+    "max_model_calls_per_task": 12,
+    "task_timeout_seconds": 1800,
+    "parse_timeout_seconds": 120,
+    "conversion_timeout_seconds": 180,
+    "ocr_file_timeout_seconds": 1200,
+    "ocr_page_timeout_seconds": 30,
+    "raw_model_shell_enabled": false,
+    "preserve_originals": true
+  },
+  "model": {
+    "input_tokens_max": 32768,
+    "output_tokens_max": 8192,
+    "role_alias": "quality-assistant",
+    "max_paid_concurrent_runs": 2,
+    "pending_usage_block_count": 1,
+    "first_token_timeout_seconds": 120,
+    "run_timeout_seconds": 600,
+    "unknown_hold_hours": 72,
+    "idempotency_days_min": 7,
+    "excess_charge_policy": "platform_absorbs"
+  },
+  "auth": {
+    "access_token_minutes": 15,
+    "refresh_absolute_days": 30,
+    "activation_hours": 72,
+    "password_min_chars": 12,
+    "max_devices": 2,
+    "invitation_delivery": "manual_no_email_dependency"
+  },
+  "kb": {
+    "max_documents_per_kb": 1000,
+    "max_objects_bytes_per_kb": 5368709120,
+    "max_chunks_per_kb": 100000,
+    "embedding_candidate": "intfloat/multilingual-e5-small",
+    "dimensions": 384,
+    "max_embedding_input_tokens": 512,
+    "chunk_body_tokens": 350,
+    "overlap_tokens": 50,
+    "metadata_tokens_max": 80,
+    "embedding_local": true,
+    "keyword_top_k": 30,
+    "vector_top_k": 30,
+    "rrf_k": 60,
+    "final_chunks_max": 6,
+    "answer_context_tokens_max": 8000
+  },
+  "news": {
+    "timezone": "Asia/Shanghai",
+    "local_time": "09:00",
+    "max_sources": 10,
+    "max_candidates_per_source_daily": 50,
+    "domain_concurrency": 1,
+    "domain_interval_seconds": 2,
+    "overlap_days": 7,
+    "catchup": "one_merged_run",
+    "max_daily_model_calls": 2,
+    "daily_absolute_unit_cap": null,
+    "retry_delays_seconds": [
+      60,
+      300
+    ],
+    "lease_seconds": 600,
+    "heartbeat_seconds": 60,
+    "notification_auto_max_per_logical_day": 1,
+    "daily_first_call_balance_numerator": 5,
+    "daily_first_call_balance_denominator": 100,
+    "budget_timezone": "Asia/Shanghai",
+    "daily_plans_per_account_per_device": 1,
+    "source_config_user_visible": false,
+    "first_domain": "pharma",
+    "catalogue_update": "versioned_data_only"
+  },
+  "search": {
+    "max_searches_per_task": 3,
+    "max_reads_per_task": 10,
+    "max_results": 5,
+    "per_minute_searches_per_account": 10,
+    "per_minute_reads_per_account": 30,
+    "max_body_chars": 100000,
+    "max_response_bytes": 10485760,
+    "max_redirects": 3,
+    "default_user_unit_charge": 0
+  },
+  "retention": {
+    "temp_after_terminal_hours": 24,
+    "cache_days": 30,
+    "server_usage_audit_days": 180,
+    "server_log_days": 14,
+    "daily_backup_count": 7,
+    "weekly_backup_count": 4
+  },
+  "ui": {
+    "primary_navigation": [
+      "workbench",
+      "knowledge",
+      "office",
+      "news"
+    ],
+    "minimum_reference_physical_window": [
+      1024,
+      768
+    ],
+    "windows_scale_percent": [
+      100,
+      125,
+      150,
+      200
+    ],
+    "body_css_px_min": 14,
+    "secondary_css_px_min": 12,
+    "core_module_clicks_max": 1,
+    "core_operation_clicks_max": 2,
+    "first_time_testers_min": 5,
+    "non_pharma_testers_min": 2,
+    "unassisted_success_min": 4
+  },
+  "office_preferences": {
+    "active_profile_max": 50,
+    "name_chars_max": 60,
+    "extra_instructions_chars_max": 4000,
+    "local_only": true,
+    "auto_train": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "check_type": "specification_structure_only",
+  "result": "passed",
+  "counts": {
+    "requirements": 67,
+    "cycles": 15,
+    "tasks": 45,
+    "planned_tests": 153,
+    "checks": 1354,
+    "api_operations": 24,
+    "local_sqlite_tables_including_fts": 40,
+    "server_tables_static": 16
+  },
+  "errors": [],
+  "product_tests_run": 0,
+  "not_validated": [
+    "application implementation",
+    "real Windows install/runtime",
+    "real PostgreSQL execution",
+    "full JSON Schema/OpenAPI standards validation",
+    "real model/search/OCR/Office behavior",
+    "licenses of an actual selected distribution",
+    "performance/accuracy/cost targets",
+    "stage gates and binary fixture completion"
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "document_version": "1.2",
+  "date": "2026-10-22",
+  "description": "QualityOffice AI specification package, not a compiled application.",
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 1170,
+      "sha256": "54fd342316e913f4e6db1c18de19ecf419550c0b3b14af782bb96e9b49d65667"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3674,
+      "sha256": "8d6aa5d4a4d88d9bfaa84b8c3687c68cfb3e84ef20004dd6fa35636ccf160404"
+    },
+    {
+      "path": "acceptance/ADR-template.md",
+      "bytes": 608,
+      "sha256": "9f54239f2f34d452290182508dd62c3e7a01760bb9880f4106ba13d8ae3b21a8"
+    },
+    {
+      "path": "acceptance/cycle-checklist.md",
+      "bytes": 724,
+      "sha256": "47b4dc1f0917da2a78fecdf351aabe7d20402ac134d7c33d9e5f1bcd48faaed6"
+    },
+    {
+      "path": "acceptance/fixture_manifest.json",
+      "bytes": 10910,
+      "sha256": "8c4cad3f554304cd58d863458f7ad7718919540bf8f935a7c015a2ddb8120111"
+    },
+    {
+      "path": "acceptance/test-report-template.md",
+      "bytes": 823,
+      "sha256": "e78bfdfd31c86f9e90c9ec938711f7eb0b07f3c7fe67dbe1e83ffcb75103b08b"
+    },
+    {
+      "path": "baseline/commercial-policy-template.md",
+      "bytes": 1131,
+      "sha256": "4795b6b50ecf62fc823cd7638a54a071b8c7825ada8f79916b48158959f0bbb7"
+    },
+    {
+      "path": "baseline/decisions.json",
+      "bytes": 7666,
+      "sha256": "2c5943fa81fcc15a6e18673d0ee75d8758fbeb0a373624f018c3590565014641"
+    },
+    {
+      "path": "baseline/defaults.json",
+      "bytes": 4104,
+      "sha256": "3011846b24ed19f7eac2a9ef2c66bfb0103623da7281a1f56dae03cd448dfc2a"
+    },
+    {
+      "path": "baseline/product-identity.json",
+      "bytes": 1564,
+      "sha256": "7765ae19d53dc1d62695322974c9181a824951df24e2e796e54625ad43d4d0ce"
+    },
+    {
+      "path": "baseline/release-manifest.template.json",
+      "bytes": 801,
+      "sha256": "893f4dbb955e924c12cefa3a7a0db7c95815aa244ebf6f0b2b8711d6161da3f6"
+    },
+    {
+      "path": "build_contracts.py",
+      "bytes": 26664,
+      "sha256": "f7d16d44d4d39920cd9d14549147cebafa4844b4b60719bc7faddf8230ed3a98"
+    },
+    {
+      "path": "build_registry.py",
+      "bytes": 60414,
+      "sha256": "8badf53021dfefaaaf79edbc0f237f38bd385b89ad6fbcf77d80ccd04f140681"
+    },
+    {
+      "path": "contracts/API-semantics.md",
+      "bytes": 7902,
+      "sha256": "f44a3dce0d2dec93ab786bea0a3cee24907c8cfddaecaf114162468847188057"
+    },
+    {
+      "path": "contracts/examples.json",
+      "bytes": 12216,
+      "sha256": "b750034f3ca102cf5f7b222ee134e60be4619b3e8e900bf28aa2af2e0ed8e4bb"
+    },
+    {
+      "path": "contracts/local-tools.schema.json",
+      "bytes": 5955,
+      "sha256": "585325808fe3db8389739899f41d3d6c2b8394c8389ee29888df6f827f59865e"
+    },
+    {
+      "path": "contracts/office-operation-matrix.json",
+      "bytes": 2951,
+      "sha256": "a155f27fda28123e2a3a461b029dec8680f11915d6111fe7d37cb478ea87a369"
+    },
+    {
+      "path": "contracts/office-plan.schema.json",
+      "bytes": 23593,
+      "sha256": "51bf70c27774c4528da735a41448ac7f6a7c243baaa4e6dbce50ddebda1b108e"
+    },
+    {
+      "path": "contracts/openapi.json",
+      "bytes": 130385,
+      "sha256": "469186867571465fb05e82fe0e06804ead50941882faf6c7b23ae0742ce9fc5d"
+    },
+    {
+      "path": "contracts/parse-result.schema.json",
+      "bytes": 15505,
+      "sha256": "721a73ebb1dc326bf4117c46c07df9f7e4575b2837343ff63191eb75600e335a"
+    },
+    {
+      "path": "contracts/personalization-and-subscriptions.md",
+      "bytes": 6385,
+      "sha256": "1de4e5f255edd6a3d811294078e1b9bd255eb7ccd786bdb04c6e432b1631183b"
+    },
+    {
+      "path": "contracts/personalization-and-subscriptions.schema.json",
+      "bytes": 30818,
+      "sha256": "f35b0227e0fecfd23228755c693fa3d5ad5f65015cc518bf81399f22b1ecddb2"
+    },
+    {
+      "path": "contracts/sse-event.schema.json",
+      "bytes": 8260,
+      "sha256": "a261d0bec2af0facd7c435c554087cb07a4d2a4855c595d7526777a71c1cca1c"
+    },
+    {
+      "path": "contracts/sse-events.md",
+      "bytes": 1903,
+      "sha256": "dac6faf7a1f3783e35fb12cac89a773cd4a7bff5deeb968a7cdf0a2956948759"
+    },
+    {
+      "path": "contracts/tool-result.schema.json",
+      "bytes": 10329,
+      "sha256": "7155e49a2be7d2a51fca8a75e2ddd5021ac6ea0e8057c97e64777b99bdce3822"
+    },
+    {
+      "path": "data/data-invariants.md",
+      "bytes": 4677,
+      "sha256": "acfff21f4c1e5939cabb148be294fc0b445308494933aabe7f208ad698079c4f"
+    },
+    {
+      "path": "data/local.sql",
+      "bytes": 14273,
+      "sha256": "c98368a395f49c4c46e6fa382613ec9b595f4bc5b25c2a46de29a6f3342724c9"
+    },
+    {
+      "path": "data/server.sql",
+      "bytes": 9080,
+      "sha256": "b96edea5cb2e5fe7f6a42752d03a0d7f6ae3b05bd3fac4c9cd0def959af79b7c"
+    },
+    {
+      "path": "requirements.json",
+      "bytes": 8580,
+      "sha256": "236cdfae76270e439202c3e60b208c8661efbeae27af653447ac8f800fb6bca7"
+    },
+    {
+      "path": "tasks.json",
+      "bytes": 50225,
+      "sha256": "47e6d3749f7acb206564853f2d207d77f174930282bb38463bb57012dc4d0467"
+    },
+    {
+      "path": "test_cases.json",
+      "bytes": 109006,
+      "sha256": "7a0845fd71e46bbbe7250f1ab91958facdfa90151120bd9feb0273936219aa5d"
+    },
+    {
+      "path": "traceability.json",
+      "bytes": 12620,
+      "sha256": "6a832b98d88cfc6f5d8862a82eeae1e97d8ac40305ad801cbfe7189100b6afec"
+    },
+    {
+      "path": "validate_spec.py",
+      "bytes": 11026,
+      "sha256": "b9ffedb170752a883876eac95a731fc74c26cc9e256d23edf0d041209a7f747a"
+    },
+    {
+      "path": "validation_report.json",
+      "bytes": 708,
+      "sha256": "173ec477690f3a16f25178d9fe05f4ac4b918ec10b1dbcd7041f70cb07b02b75"
+    },
+    {
+      "path": "实施工作包.md",
+      "bytes": 28907,
+      "sha256": "3b04461f4ce991ae0e3dbb2aabd43ebe7b63f59bd8da6f9e3f9165f24e113a26"
+    },
+    {
+      "path": "开发Spec.md",
+      "bytes": 92527,
+      "sha256": "e717e2d577394ab29a165b2d82dfce7bf8d79fe868350644f774c998299b4a55"
+    },
+    {
+      "path": "测试用例手册.md",
+      "bytes": 65076,
+      "sha256": "6cfb7bdc3a6a8c89463bc0b11cac095e80bc3bbc6ca2591f0fbc05806e3bc83f"
+    },
+    {
+      "path": "需求文档.md",
+      "bytes": 33204,
+      "sha256": "cbaea97513c6790fc15bdbaa92a8ea2b12af6361d1d36553dfd668957aabe70d"
+    }
+  ]
+}

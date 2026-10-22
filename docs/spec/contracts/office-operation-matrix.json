@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "classification": "normative_product_allowlist",
+  "operations": {
+    "base_docx": {"introduced_in":"V0.1","format":"docx","target_kind":"docx_range","steps":["fill_placeholder","append_doc_section","append_table","append_image","write_table"]},
+    "base_xlsx": {"introduced_in":"V0.1","format":"xlsx","target_kind":"xlsx_range","steps":["write_cells","set_formula"]},
+    "base_pptx": {"introduced_in":"V0.1","format":"pptx","target_kind":"ppt_shape","steps":["create_slide"],"layouts":["cover","body","table","summary"]},
+    "word_generate": {"introduced_in":"V0.4.1","format":"docx","target_kind":"docx_range","steps":["fill_placeholder","append_doc_section","append_table","append_image","write_table"]},
+    "word_edit": {"introduced_in":"V0.4.1","format":"docx","target_kind":"docx_range","steps":["replace_text","write_table","replace_image","fill_placeholder"]},
+    "excel_process": {"introduced_in":"V0.4.1","format":"xlsx","target_kind":"xlsx_range","steps":["write_cells","set_formula","clean_range","aggregate_range","create_chart"]},
+    "ppt_generate": {"introduced_in":"V0.4.2","format":"pptx","target_kind":"ppt_shape","steps":["create_slide"],"layouts":["cover","agenda","body","two_column","table","chart","summary"]},
+    "ppt_patch": {"introduced_in":"V0.4.3","format":"pptx","target_kind":"ppt_shape","steps":["replace_text","write_table","replace_image"]}
+  },
+  "formula_policy": {
+    "functions":["SUM","AVERAGE","MIN","MAX","COUNT","IF"],
+    "operators":["+","-","*","/","^","=","<>","<",">","<=",">="],
+    "allow_external_workbook":false,
+    "allow_full_column_or_row_reference":false,
+    "allow_volatile_or_indirect_functions":false,
+    "max_formula_chars":1000,
+    "max_referenced_nonempty_cells":100000,
+    "validation":"Parse expression AST and validate every reference against granted workbook regions; do not rely on string blacklist. Recalculate and compare supported formulas with independent oracles."
+  },
+  "business_checks":[
+    "Operation must be enabled for this product release and entitlement.",
+    "Output format and target kind must match the operation.",
+    "Every target resolves against immutable input/template version; targets outside selected range are denied.",
+    "create_slide table/chart layouts require matching table_data/chart_data; row/series dimensions must match.",
+    "Only selected or generated image IDs may be used; no arbitrary URLs or paths.",
+    "Word replace_image requires a uniquely identified supported image; ambiguous or complex objects are denied.",
+    "Basic PPT generation supports 1-30 slides; product PPT workflow supports 5-30 slides.",
+    "Total written nonempty cells per job must not exceed 100000 and per-output limits apply.",
+    "Generated source IDs must exist and support key numbers; missing fields remain visibly unfilled.",
+    "PPT patch cannot mutate shared master/theme/media for unselected slides."
+  ]
+}
